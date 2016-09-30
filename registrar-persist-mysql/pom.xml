@@ -22,5 +22,10 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>hu.uni.miskolc.iit.swtest</groupId>
+    	<artifactId>registrar-persist</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 </project>
