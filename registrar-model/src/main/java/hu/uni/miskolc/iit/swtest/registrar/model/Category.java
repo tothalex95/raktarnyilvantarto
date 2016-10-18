@@ -2,7 +2,7 @@ package hu.uni.miskolc.iit.swtest.registrar.model;
 
 public enum Category {
 
-	FOOD, CLOTHING, ALCOHOL
+	FOOD, CLOTHING, ALCOHOL, TABACCO
 	
 	/*
 	 * S ingle Responsibility Principle - 1 osztály egy feladat/felelősség
