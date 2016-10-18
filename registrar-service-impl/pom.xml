@@ -27,5 +27,10 @@
     	<artifactId>registrar-service</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
     </dependency>
+    <dependency>
+    	<groupId>hu.uni.miskolc.iit.swtest</groupId>
+    	<artifactId>registrar-persist</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 </project>
