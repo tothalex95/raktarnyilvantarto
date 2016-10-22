@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
+	<!-- itt config-olom a log4j2-t figyelni! kell e meg logfile-okat implementalni? 
+		pl jelenleg külön csak a controller, model, és persist logolodik, a többi 
+		ömlesztve egy helyre megy -malex -->
+	<!-- nevermind mindhez csináltam, aztán vagy használjuk, vagy nem :) gitIgnore-t 
+		nem elfelejteni! ne commitolja a log-okat mert felesleges -malex -->
+
+	<Appenders>
+		<File name="ALL_LOGS" fileName="logs/registrar.log" append="true">
+			<PatternLayout
+				pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" />
+		</File>
+		<File name="CONTROLLER_LOGS" fileName="logs/registrarController.log"
+			append="true">
+			<PatternLayout
+				pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" />
+		</File>
+		<File name="MODEL_LOGS" fileName="logs/registrarModel.log"
+			append="true">
+			<PatternLayout
+				pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" />
+		</File>
+		<File name="DAO_LOGS" fileName="logs/registrarPersist.log"
+			append="true">
+			<PatternLayout
+				pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" />
+		</File>
+		<!-- <File name="DAO_IMPL_LOGS" fileName="logs/registrarPersistImpl.log" 
+			append="true"> <PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] 
+			%C{2} (%F:%L) - %m%n" /> </File> <File name="SERV_LOGS" fileName="logs/registrarService.log" 
+			append="true"> <PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] 
+			%C{2} (%F:%L) - %m%n" /> </File> <File name="SERV_IMPL_LOGS" fileName="logs/registrarServiceImpl.log" 
+			append="true"> <PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] 
+			%C{2} (%F:%L) - %m%n" /> </File> <File name="UTIL_LOGS" fileName="logs/registrarUtil.log" 
+			append="true"> <PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] 
+			%C{2} (%F:%L) - %m%n" /> </File> <File name="WEB_LOGS" fileName="logs/registrarWeb.log" 
+			append="true"> <PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] 
+			%C{2} (%F:%L) - %m%n" /> </File> -->
+
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" />
+		</Console>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="hu.uni.miskolc.iit.swtest.registrar.controller"
+			level="info">
+			<AppenderRef ref="STDOUT" />
+			<AppenderRef ref="ALL_LOGS" />
+			<AppenderRef ref="CONTROLLER_LOGS" />
+		</Logger>
+
+		<Logger name="hu.uni.miskolc.iit.swtest.registrar.model" level="info">
+			<AppenderRef ref="STDOUT" />
+			<AppenderRef ref="ALL_LOGS" />
+			<AppenderRef ref="MODEL_LOGS" />
+		</Logger>
+		<Logger name="hu.uni.miskolc.iit.swtest.registrar.persist"
+			level="info">
+			<AppenderRef ref="STDOUT" />
+			<AppenderRef ref="ALL_LOGS" />
+			<AppenderRef ref="DAO_LOGS" />
+		</Logger>
+		<!-- <Logger name="hu.uni.miskolc.iit.swtest.registrar.persist.mysql" level="info"> 
+			<AppenderRef ref="STDOUT" /> <AppenderRef ref="ALL_LOGS" /> <AppenderRef 
+			ref="DAO_IMPL_LOGS" /> </Logger> <Logger name="hu.uni.miskolc.iit.swtest.registrar.service" 
+			level="info"> <AppenderRef ref="STDOUT" /> <AppenderRef ref="ALL_LOGS" /> 
+			<AppenderRef ref="SERV_LOGS" /> </Logger> <Logger name="hu.uni.miskolc.iit.swtest.registrar.service.impl" 
+			level="info"> <AppenderRef ref="STDOUT" /> <AppenderRef ref="ALL_LOGS" /> 
+			<AppenderRef ref="SERV_IMPL_LOGS" /> </Logger> <Logger name="hu.uni.miskolc.iit.swtest.registrar.util" 
+			level="info"> <AppenderRef ref="STDOUT" /> <AppenderRef ref="ALL_LOGS" /> 
+			<AppenderRef ref="UTIL_LOGS" /> </Logger> <Logger name="hu.uni.miskolc.iit.swtest.registrar.web" 
+			level="info"> <AppenderRef ref="STDOUT" /> <AppenderRef ref="ALL_LOGS" /> 
+			<AppenderRef ref="WEB_LOGS" /> </Logger> -->
+
+		<Root level="trace">
+			<AppenderRef ref="ALL_LOGS" level="error" />
+			<AppenderRef ref="STDOUT" level="warn" />
+		</Root>
+	</Loggers>
+
+</Configuration>
