@@ -87,7 +87,11 @@ public abstract class Product {
 			return false;
 		return true;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Product [serialNumber=" + serialNumber + ", productNumber=" + productNumber + ", category=" + category
+				+ ", name=" + name + ", manufacturer=" + manufacturer + ", size=" + size + ", weight=" + weight + "]";
+	}
 	
 }

@@ -2,8 +2,16 @@ package hu.uni.miskolc.iit.swtest.registrar.model;
 
 public enum Category {
 
-	FOOD, NARCOTICS, FURNITURE, INDUSTRIALEQUIPMENT
+	FOOD("Food"), NARCOTICS("Narcotics"), FURNITURE("Furniture"), INDUSTRIAL_EQUIPMENT("Industrial Equipment");
 	
+	private final String name;
 	
+	private Category(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
 	
 }

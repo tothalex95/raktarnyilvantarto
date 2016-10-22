@@ -5,22 +5,22 @@ import java.util.Collection;
 
 public enum Manufacturer {
 
-	A, B, C;
+	A("A"), B("B"), C("C");
 	
-	private Collection<Category> categories;
+	private final String name;
+	private final Collection<Category> categories;
 	
-	private Manufacturer() {
+	private Manufacturer(String name) {
+		this.name = name;
 		categories = new ArrayList<Category>();
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public Collection<Category> getCategories() {
 		return categories;
 	}
-
-	public void setCategories(Collection<Category> categories) {
-		this.categories = categories;
-	}
-	
-	
 	
 }

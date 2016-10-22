@@ -10,15 +10,9 @@ package hu.uni.miskolc.iit.swtest.registrar.model;
 public class IndustrialEquipment extends Product {
 
 	/**
-	 * @param serialNumber
-	 * @param productNumber
-	 * @param category
-	 * @param name
-	 * @param manufacturer
-	 * @param size
-	 * @param weight
 	 * @param dangerLevel
 	 */
+
 
 	private int dangerLevel;
 	
@@ -27,9 +21,19 @@ public class IndustrialEquipment extends Product {
 		super(serialNumber, productNumber, category, name, manufacturer, size, weight);
 		this.dangerLevel=dangerLevel;
 	}
-	
-	public int getDangerLevel()
-	{
+
+	public int getDangerLevel() {
 		return dangerLevel;
 	}
+
+	public void setDangerLevel(int dangerLevel) {
+		this.dangerLevel = dangerLevel;
+	}
+
+	@Override
+	public String toString() {
+		return "IndustrialEquipment [dangerLevel=" + dangerLevel + ", toString()=" + super.toString() + "]";
+	}
+	
+	
 }

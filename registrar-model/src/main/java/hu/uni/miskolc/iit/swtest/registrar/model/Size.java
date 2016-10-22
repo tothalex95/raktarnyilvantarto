@@ -2,9 +2,9 @@ package hu.uni.miskolc.iit.swtest.registrar.model;
 
 public final class Size {
 
-	private int x;
-	private int y;
-	private int z;
+	private final int x;
+	private final int y;
+	private final int z;
 	
 	public Size(int x, int y, int z) {
 		super();
@@ -44,6 +44,18 @@ public final class Size {
 		if (z != other.z)
 			return false;
 		return true;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public int getZ() {
+		return z;
 	}
 	
 }
