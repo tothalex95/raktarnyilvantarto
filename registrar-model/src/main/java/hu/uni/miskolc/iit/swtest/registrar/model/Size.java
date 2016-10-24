@@ -2,6 +2,7 @@ package hu.uni.miskolc.iit.swtest.registrar.model;
 
 public final class Size {
 
+	// mm
 	private final int x;
 	private final int y;
 	private final int z;
@@ -11,6 +12,10 @@ public final class Size {
 		this.x = x;
 		this.y = y;
 		this.z = z;
+	}
+	
+	public Size(int n) {
+		this(n,n,n);
 	}
 
 	@Override
