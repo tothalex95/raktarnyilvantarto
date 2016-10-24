@@ -13,5 +13,6 @@ public class LoggingTest {
 		LOG.info("info test");
 		LOG.warn("warn test");
 		LOG.error("error test");
+		LOG.fatal("Tündi");
 	}
 }
