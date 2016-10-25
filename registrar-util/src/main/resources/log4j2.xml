@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
-	<!-- itt config-olom a log4j2-t figyelni! kell e meg logfile-okat implementalni? 
-		pl jelenleg külön csak a controller, model, és persist logolodik, a többi 
-		ömlesztve egy helyre megy -malex -->
-	<!-- nevermind mindhez csináltam, aztán vagy használjuk, vagy nem :) gitIgnore-t 
-		nem elfelejteni! ne commitolja a log-okat mert felesleges -malex -->
 
 	<Appenders>
 		<File name="ALL_LOGS" fileName="../logs/registrar.log" append="true">
