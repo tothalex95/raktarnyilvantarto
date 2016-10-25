@@ -6,28 +6,28 @@ import java.util.Map;
 
 public class Positions {
 
-	private final Map<Long, String> positions;
+	private final Map<Product, String> positions;
 	
 	public Positions() {
-		positions = new HashMap<Long, String>();
+		positions = new HashMap<Product, String>();
 	}
 	
-	public void add(Long productNumber, String location) {
+	public void add(Product product, String location) {
 		if (positions.values().contains(location))
 			throw new IllegalArgumentException("fuck you");
-		positions.put(productNumber, location);
+		positions.put(product, location);
 	}
 	
-	public void remove(Long productNumber) {
-		positions.remove(productNumber);
+	public void remove(Product product) {
+		positions.remove(product);
 	}
 	
 	public Collection<String> getUsedPositions() {
 		return positions.values();
 	}
 	
-	public String getPosition(Long productNumber) {
-		return positions.get(productNumber);
+	public String getPosition(Product product) {
+		return positions.get(product);
 	}
 
 }

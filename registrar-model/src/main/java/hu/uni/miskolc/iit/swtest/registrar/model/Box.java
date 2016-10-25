@@ -7,6 +7,8 @@ public class Box {
 	private final BoxSize boxSize;
 	
 	public Box(Product product, int count, BoxSize boxSize) {
+		if (new Size(product.getSize(), count).compareTo(boxSize.size) == -1)
+			throw new IllegalArgumentException("boxsize is not large enough");
 		this.product = product;
 		this.count = count;
 		this.boxSize = boxSize;

@@ -5,7 +5,7 @@ import java.util.Collection;
 
 public enum Manufacturer {
 
-	A("A"), B("B"), C("C");
+	UMBRELLACORP("umbrellaCorp"), BRAZZERS("Brazzers"), APPLE("Apple");
 	
 	private final String name;
 	private final Collection<Category> categories;

@@ -1,35 +1,51 @@
 package hu.uni.miskolc.iit.swtest.registrar.model;
 
-public final class Size {
+public final class Size implements Comparable<Size> {
 
 	// mm
-	private final int x;
-	private final int y;
-	private final int z;
-	
-	public Size(int x, int y, int z) {
+	private final int width;
+	private final int height;
+	private final int depth;
+
+	public Size(int width, int height, int depth) {
 		super();
-		this.x = x;
-		this.y = y;
-		this.z = z;
+		this.width = width;
+		this.height = height;
+		this.depth = depth;
 	}
 	
 	public Size(int n) {
 		this(n,n,n);
 	}
+	
+	public Size(Size s, int n) {
+		this(s.width*n, s.height*n, s.depth*n);
+	}
 
 	@Override
 	public String toString() {
-		return x + "x" + y + "x" + z;
+		return "Size [width=" + width + ", height=" + height + ", depth=" + depth + "]";
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public int getDepth() {
+		return depth;
+	}
+
+	public int getWidth() {
+		return width;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + x;
-		result = prime * result + y;
-		result = prime * result + z;
+		result = prime * result + depth;
+		result = prime * result + height;
+		result = prime * result + width;
 		return result;
 	}
 
@@ -42,25 +58,24 @@ public final class Size {
 		if (getClass() != obj.getClass())
 			return false;
 		Size other = (Size) obj;
-		if (x != other.x)
+		if (depth != other.depth)
 			return false;
-		if (y != other.y)
+		if (height != other.height)
 			return false;
-		if (z != other.z)
+		if (width != other.width)
 			return false;
 		return true;
 	}
 
-	public int getX() {
-		return x;
+	@Override
+	public int compareTo(Size o) {
+		int v1 = width * height * depth;
+		int v2 = o.width * o.height * o.depth;
+		if (v1 > v2)
+			return 1;
+		if (v1 < v2)
+			return -1;
+		return 0;
 	}
 
-	public int getY() {
-		return y;
-	}
-
-	public int getZ() {
-		return z;
-	}
-	
 }
