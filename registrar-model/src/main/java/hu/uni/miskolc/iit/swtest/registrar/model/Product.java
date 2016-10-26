@@ -8,10 +8,10 @@ public class Product {
 	private final Manufacturer manufacturer;
 	private final Size size;
 	private final float weight;
-	private final Restriction restriction;
-	
+	private final int restriction;
+
 	public Product(long productNumber, Category category, String name, Manufacturer manufacturer, Size size,
-			float weight, Restriction restriction) {
+			float weight, int restriction) {
 		super();
 		this.productNumber = productNumber;
 		this.category = category;
@@ -21,27 +21,62 @@ public class Product {
 		this.weight = weight;
 		this.restriction = restriction;
 	}
-	
+
 	public long getProductNumber() {
 		return productNumber;
 	}
+
 	public Category getCategory() {
 		return category;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public Manufacturer getManufacturer() {
 		return manufacturer;
 	}
+
 	public Size getSize() {
 		return size;
 	}
+
 	public float getWeight() {
 		return weight;
 	}
-	public Restriction getRestriction() {
+
+	public int getRestriction() {
 		return restriction;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Product [productNumber=" + productNumber + ", category=" + category + ", name=" + name
+				+ ", manufacturer=" + manufacturer + ", size=" + size + ", weight=" + weight + ", restriction="
+				+ restriction + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (productNumber ^ (productNumber >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Product other = (Product) obj;
+		if (productNumber != other.productNumber)
+			return false;
+		return true;
+	}
+
 }
