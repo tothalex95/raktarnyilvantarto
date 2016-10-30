@@ -10,28 +10,38 @@ public class Order {
 
 	public Order(long orderID, Map<Product, Integer> products, Customer customer) {
 		super();
+		if (orderID < 1) {
+			throw new IllegalArgumentException("The order ID cannot be negative");
+		}
+		if (products == null){
+			throw new IllegalArgumentException("The products list cannot be empty");
+		}
+		if (customer == null) {
+			throw new IllegalArgumentException("The customer cannot be null");
+		}
 		this.orderID = orderID;
 		this.products = products;
 		this.customer = customer;
 	}
 
 	public void add(Product product, int count) {
+		if (product == null) throw new IllegalArgumentException("Product cannot be null");
+		if (count <= 0) throw new IllegalArgumentException("Count cannot be zero or negative"); 
 		products.put(product, count);
 	}
 
 	public void remove(Product product, int count) {
 		if (!products.containsKey(product))
-			throw new IllegalArgumentException("no such product");
+			throw new IllegalArgumentException("No such product");
 		if (count > products.get(product))
-			throw new IllegalArgumentException("there is not as much of that product");
-
+			throw new IllegalArgumentException("There is not as much of that product");
 		if (products.get(product) == count)
 			products.remove(product);
 		else
 			products.put(product, products.get(product).intValue() - count);
 	}
 
-	public void remove(Product product) {
+	public void remove(Product product) throws IllegalArgumentException {
 		remove(product, products.get(product));
 	}
 
@@ -81,7 +91,4 @@ public class Order {
 		}
 		return ret;
 	}
-	
-	
-
 }
