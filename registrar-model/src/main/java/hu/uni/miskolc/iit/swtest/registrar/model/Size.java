@@ -9,6 +9,8 @@ public final class Size implements Comparable<Size> {
 
 	public Size(int width, int height, int depth) {
 		super();
+		if (width < 1 || height < 1 || depth < 1)
+			throw new IllegalArgumentException("Size parameters must be positive.");
 		this.width = width;
 		this.height = height;
 		this.depth = depth;

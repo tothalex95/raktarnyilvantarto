@@ -9,6 +9,10 @@ public class Address {
 
 	public Address(String country, String city, String street, int number) {
 		super();
+		if (country == null || country.isEmpty()) throw new IllegalArgumentException("The country cannot be empty.");
+		else if (city == null || city.isEmpty()) throw new IllegalArgumentException("The city cannot be empty.");
+		else if (street == null || street.isEmpty()) throw new IllegalArgumentException("The street cannot be empty.");
+		else if (number < 1) throw new IllegalArgumentException("The number must be positive.");
 		this.country = country;
 		this.city = city;
 		this.street = street;
