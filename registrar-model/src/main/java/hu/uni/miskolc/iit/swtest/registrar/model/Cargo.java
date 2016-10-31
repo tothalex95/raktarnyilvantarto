@@ -5,10 +5,14 @@ import java.util.Collection;
 public class Cargo {
 
 	private final Collection<Box> boxes;
-	private final String source;
-	private final String destination;
+	private final Address source;
+	private final Address destination;
 	
-	public Cargo(Collection<Box> boxes, String source, String destination) {
+	public Cargo(Collection<Box> boxes, Address source, Address destination) {
+		if(boxes==null) throw new NullPointerException("Boxes cannot be Null");
+		if(boxes.isEmpty()) throw new IllegalArgumentException("Boxes cannot be empty");
+		if(source==null) throw new IllegalArgumentException("Source cannot be Null");
+		if(destination==null) throw new IllegalArgumentException("Destinaition cannot be Null");
 		this.boxes = boxes;
 		this.source = source;
 		this.destination = destination;
@@ -18,11 +22,11 @@ public class Cargo {
 		return boxes;
 	}
 
-	public String getSource() {
+	public Address getSource() {
 		return source;
 	}
 
-	public String getDestination() {
+	public Address getDestination() {
 		return destination;
 	}
 	
