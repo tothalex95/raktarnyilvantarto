@@ -19,9 +19,7 @@ public class Product {
 		else if (manufacturer == null) throw new IllegalArgumentException("Manufacturer cannot be null");
 		else if (size==null) throw new IllegalArgumentException("Size cannot be null");
 		else if (weight<1) throw new IllegalArgumentException("Weight cannot be under 1");
-		else if (restriction>1) throw new IllegalArgumentException("Restriction cannot be null");
-			
-		
+		//else if (restriction>1) throw new IllegalArgumentException("Restriction cannot be null");
 			
 		this.productNumber = productNumber;
 		this.category = category;
