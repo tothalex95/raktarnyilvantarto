@@ -37,5 +37,15 @@ public class RestrictionTest {
 	public void testGetFlagFromRestrictions() {
 		assertEquals("", 0b1001, Restriction.getFlagFromRestrictions(EnumSet.of(Restriction.POISONOUS, Restriction.FLAMMABLE)));
 	}
+	
+	@Test
+	public void testToString() {
+		assertEquals("NAUGHTY.toString=NAUGHTY", true, Restriction.NAUGHTY.toString().equals("NAUGHTY"));
+	}
+	
+	@Test
+	public void testValueOf() {
+		assertEquals("", Restriction.FLAMMABLE, Restriction.valueOf("FLAMMABLE"));
+	}
 
 }
