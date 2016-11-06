@@ -19,7 +19,7 @@ public interface OrderDAO {
 	public Order readOrder(long orderID) throws OrderNotFoundException;
 	
 	public void updateOrder(Order order) throws OrderNotFoundException;
-	public void mergeOrder(Order base, Order additional) throws OrderNotFoundException, CustomerDiscrepancy;
+	public void mergeOrder(Order base, Order additional) throws OrderNotFoundException, CustomerDiscrepancyException;
 	public void addProductToOrder(Order order, Product product, int toadd) throws OrderNotFoundException, ProductNotFoundException;
 	public void removeProductFromOrder(Order order, Product product, int toremove) throws OrderNotFoundException, ProductNotFoundException;
 	public void removeProductFromOrder(Order order, Product product) throws OrderNotFoundException, ProductNotFoundException;

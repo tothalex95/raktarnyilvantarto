@@ -1,27 +1,27 @@
 package hu.uni.miskolc.iit.swtest.registrar.persist;
 
-public class CustomerDiscrepancy extends Exception {
+public class CustomerDiscrepancyException extends Exception {
 
-	public CustomerDiscrepancy() {
+	public CustomerDiscrepancyException() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CustomerDiscrepancy(String message) {
+	public CustomerDiscrepancyException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
 
-	public CustomerDiscrepancy(Throwable cause) {
+	public CustomerDiscrepancyException(Throwable cause) {
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
 
-	public CustomerDiscrepancy(String message, Throwable cause) {
+	public CustomerDiscrepancyException(String message, Throwable cause) {
 		super(message, cause);
 		// TODO Auto-generated constructor stub
 	}
 
-	public CustomerDiscrepancy(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+	public CustomerDiscrepancyException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 		// TODO Auto-generated constructor stub
 	}
