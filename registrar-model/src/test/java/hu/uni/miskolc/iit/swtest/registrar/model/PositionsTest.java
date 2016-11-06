@@ -52,8 +52,24 @@ public class PositionsTest {
 				(int) Restriction.POISONOUS.getFlag()), "t1");
 		p.add(new Product(2, Category.FURNITURE, "fd", Manufacturer.BRAZZERS, new Size(10, 20, 5), 100,
 				(int) Restriction.FLAMMABLE.getFlag()), "t2");
-		assertEquals("", "t1", p.getPosition(new Product(1, Category.FOOD, "xy", Manufacturer.APPLE, new Size(1),
-				5, (int) Restriction.POISONOUS.getFlag())));
+		assertEquals("", "t1", p.getPosition(new Product(1, Category.FOOD, "xy", Manufacturer.APPLE, new Size(1), 5,
+				(int) Restriction.POISONOUS.getFlag())));
+	}
+
+	@Test
+	public void testRemove() {
+		Positions p = new Positions();
+		p.add(new Product(1, Category.FOOD, "xy", Manufacturer.APPLE, new Size(1), 5,
+				(int) Restriction.POISONOUS.getFlag()), "t1");
+		p.remove(new Product(1, Category.FOOD, "xy", Manufacturer.APPLE, new Size(1), 5,
+				(int) Restriction.POISONOUS.getFlag()));
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testRemoveWithEmptyMap() {
+		Positions p = new Positions();
+		p.remove(new Product(1, Category.FOOD, "xy", Manufacturer.APPLE, new Size(1), 5,
+				(int) Restriction.POISONOUS.getFlag()));
 	}
 
 }

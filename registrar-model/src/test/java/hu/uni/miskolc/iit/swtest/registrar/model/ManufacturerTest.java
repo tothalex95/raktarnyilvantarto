@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 import org.junit.Test;
+import org.omg.CORBA.MARSHAL;
 
 public class ManufacturerTest {
 
@@ -36,6 +37,11 @@ public class ManufacturerTest {
 	@Test
 	public void testGetCategoriesUmbrellaCorp() {
 		assertEquals("UMBRELLACORP.categories=new ...", new ArrayList<Category>(), Manufacturer.UMBRELLACORP.getCategories());
+	}
+	
+	@Test
+	public void testValueOf() {
+		assertEquals("", Manufacturer.BRAZZERS, Manufacturer.valueOf("BRAZZERS"));
 	}
 
 }
