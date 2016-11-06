@@ -39,7 +39,7 @@ public class ProductTest {
 	}
 	@Test (expected = IllegalArgumentException.class)
 	public void testProductConstructorWithIllegalRestriction(){
-		new Product(3, Category.FOOD, "vaj", Manufacturer.UMBRELLACORP, new Size(3), 25, 2);
+		new Product(3, Category.FOOD, "vaj", Manufacturer.UMBRELLACORP, new Size(3), 25, 16);
 	}
 	
 	@Test
@@ -108,6 +108,11 @@ public class ProductTest {
 		Product butter2 = new Product(3, Category.FOOD, "sajt", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
 		assertEquals(false, butter.equals(butter2));
 	}
+	public void testEqualsObjectWithNullName(){
+		Product butter = new Product(3, Category.FOOD, null, Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
+		Product butter2 = new Product(3, Category.FOOD, "sajt", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
+		assertEquals(false, butter.equals(butter2));
+	}
 	@Test
 	public void testEqualsObjectWithDifferentManufacturer() {
 		Product butter = new Product(3, Category.FOOD, "vaj", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
@@ -129,8 +134,38 @@ public class ProductTest {
 	@Test
 	public void testEqualsObjectWithDifferentRestriction() {
 		Product butter = new Product(3, Category.FOOD, "vaj", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
-		Product butter2 = new Product(3, Category.FOOD, "vaj", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.of(Restriction.FLAMMABLE)));
+		Product butter2 = new Product(3, Category.FOOD, "vaj", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.of(Restriction.POISONOUS)));
+		//System.out.println(butter2.toString());
+		
 		assertEquals(false, butter.equals(butter2));
+	}
+	@Test
+	public void testEqualObjectWithItSelf(){
+		Product butter = new Product(3, Category.FOOD, "vaj", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
+		assertEquals(true, butter.equals(butter));
+	}
+	@Test
+	public void testEqualsObjectWithNull()
+	{
+		Product butter = new Product(3, Category.FOOD, "vaj", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
+		assertEquals(false, butter.equals(null));
+	}
+	@Test
+	public void testEqualsObjectWithDiffernetObject(){
+		Product butter = new Product(3, Category.FOOD, "vaj", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
+		assertEquals(false, butter.equals("string"));
+	}
+	
+	@Test
+	public void testToString(){
+		Product butter = new Product(3, Category.FOOD, "vaj", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
+		assertEquals("Product [productNumber=3, category=Food, name=vaj, manufacturer=UMBRELLACORP, size=Size [width=3, height=3, depth=3], weight=25.0, restriction=0]", butter.toString());
+	}
+	@Test
+	public void testHashCode(){
+		Product butter = new Product(3, Category.FOOD, "vaj", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
+		Product butter2 = new Product(3, Category.FOOD, "vaj", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
+		assertTrue(butter.hashCode()==butter2.hashCode());
 	}
 	
 	

@@ -19,7 +19,7 @@ public class Product {
 		else if (manufacturer == null) throw new IllegalArgumentException("Manufacturer cannot be null");
 		else if (size==null) throw new IllegalArgumentException("Size cannot be null");
 		else if (weight<1) throw new IllegalArgumentException("Weight cannot be under 1");
-		//else if (restriction>1) throw new IllegalArgumentException("Restriction cannot be null");
+		else if (restriction<0||restriction>15) throw new IllegalArgumentException("Wrong Restirtion");
 			
 		this.productNumber = productNumber;
 		this.category = category;
@@ -69,12 +69,12 @@ public class Product {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((category == null) ? 0 : category.hashCode());
-		result = prime * result + ((manufacturer == null) ? 0 : manufacturer.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + category.hashCode();
+		result = prime * result + manufacturer.hashCode();
+		result = prime * result + name.hashCode();
 		result = prime * result + (int) (productNumber ^ (productNumber >>> 32));
 		result = prime * result + restriction;
-		result = prime * result + ((size == null) ? 0 : size.hashCode());
+		result = prime * result + size.hashCode();
 		result = prime * result + Float.floatToIntBits(weight);
 		return result;
 	}
@@ -92,19 +92,13 @@ public class Product {
 			return false;
 		if (manufacturer != other.manufacturer)
 			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
+		if (!name.equals(other.name))
 			return false;
 		if (productNumber != other.productNumber)
 			return false;
 		if (restriction != other.restriction)
 			return false;
-		if (size == null) {
-			if (other.size != null)
-				return false;
-		} else if (!size.equals(other.size))
+		if (!size.equals(other.size))
 			return false;
 		if (Float.floatToIntBits(weight) != Float.floatToIntBits(other.weight))
 			return false;
