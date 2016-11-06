@@ -26,7 +26,7 @@ public class Order {
 
 	public void add(Product product, int count) {
 		if (product == null) throw new IllegalArgumentException("Product cannot be null");
-		if (count < 1) throw new IllegalArgumentException("Count cannot be zero or negative"); 
+		if (count < 1) throw new IllegalArgumentException("Count cannot be null, zero or negative");
 		products.put(product, count);
 	}
 

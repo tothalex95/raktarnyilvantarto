@@ -66,10 +66,11 @@ public class OrderTest {
 		Map<Product, Integer> lista = new HashMap<Product, Integer>();
 		lista.put(new Product(1, Category.FOOD, "Mittomén", Manufacturer.APPLE, new Size(10), 500, 
 				Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))), 10);
-		Customer cust = new Customer(0, "Teszt", new Address("Hun", "Miskolc", "Egyetemváros", 11));
+		Customer cust = new Customer(1, "Teszt", new Address("Hun", "Miskolc", "Egyetemváros", 11));
 		Order order = new Order(1, lista, cust);
-		order.add(new Product(2, Category.FOOD, "Mittomén", Manufacturer.APPLE, new Size(10), 500, 
-				Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))), -2);
+		Product butter = new Product(3, Category.FOOD, "vaj", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
+		order.add(butter, -3);
+		//order.add(new Product(2, Category.FOOD, "Mittomén", Manufacturer.APPLE, new Size(10), 500, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))),1);
 	}
 	
 	@Test
