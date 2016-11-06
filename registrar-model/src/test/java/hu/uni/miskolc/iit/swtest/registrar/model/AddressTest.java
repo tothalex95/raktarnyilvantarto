@@ -129,5 +129,11 @@ public class AddressTest {
 		Address a = new Address("X", "Y", "Z", 1);
 		assertFalse(a.equals("asd"));
 	}
+	
+	@Test
+	public void testToString(){
+		Address a = new Address("X", "Y", "Z", 1);
+		assertTrue(a.toString().equals("Address [country=X, city=Y, street=Z, number=1]"));
+	}
 
 }
