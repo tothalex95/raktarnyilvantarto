@@ -71,5 +71,12 @@ public class PositionsTest {
 		p.remove(new Product(1, Category.FOOD, "xy", Manufacturer.APPLE, new Size(1), 5,
 				(int) Restriction.POISONOUS.getFlag()));
 	}
+	
+	@Test
+	public void testToString(){
+		Positions p = new Positions();
+		p.add(new Product(1, Category.FOOD, "vaj", Manufacturer.UMBRELLACORP, new Size(3), 25, (int) Restriction.POISONOUS.getFlag()), "t1");
+		assertEquals(p.toString(), "t1: Product [productNumber=1, category=Food, name=vaj, manufacturer=UMBRELLACORP, size=Size [width=3, height=3, depth=3], weight=25.0, restriction=8]"+System.lineSeparator());
+	}
 
 }
