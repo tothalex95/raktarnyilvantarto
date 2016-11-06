@@ -2,6 +2,8 @@ package hu.uni.miskolc.iit.swtest.registrar.model;
 
 import static org.junit.Assert.*;
 
+import java.util.EnumSet;
+
 import org.junit.Test;
 
 public class CustomerTest {
@@ -63,4 +65,34 @@ public class CustomerTest {
 		assertEquals("(1,Alex,(X,Y,Z,1))=(2,Alex,(X,Y,Z,1))", false, c.equals(d));
 	}
 
+	@Test
+	public void testToString(){
+		Customer c = new Customer(1, "Adam", new Address("X", "Y", "Z", 1));
+		assertTrue(c.toString().equals("Customer [customerID=1, name=Adam, address=Address [country=X, city=Y, street=Z, number=1]]"));
+	}
+	
+	@Test
+	public void testHashCode(){
+		Customer c = new Customer(1, "Adam", new Address("X", "Y", "Z", 1));
+		Customer b = new Customer(1, "Adam", new Address("X", "Y", "Z", 1));
+		assertTrue(c.hashCode()==b.hashCode());
+	}
+	
+	@Test
+	public void testEqualsObjectWithNull(){
+		Customer b = new Customer(1, "Adam", new Address("X", "Y", "Z", 1));
+		assertFalse(b.equals(null));
+	}
+	
+	@Test
+	public void testEqualObjectWithItSelf(){
+		Customer b = new Customer(1, "Adam", new Address("X", "Y", "Z", 1));
+		assertTrue(b.equals(b));
+	}
+	@Test
+	public void testEqualsObjectWithDiffernetObject(){
+		Customer b = new Customer(1, "Adam", new Address("X", "Y", "Z", 1));
+		assertEquals(false, b.equals("string"));
+	}
 }
+
