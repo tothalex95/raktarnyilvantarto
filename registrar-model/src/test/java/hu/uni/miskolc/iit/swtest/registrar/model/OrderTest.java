@@ -1,6 +1,7 @@
 package hu.uni.miskolc.iit.swtest.registrar.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -63,10 +64,12 @@ public class OrderTest {
 	@Test (expected = IllegalArgumentException.class)
 	public void testOrderAddWithInvalidNumber() {
 		Map<Product, Integer> lista = new HashMap<Product, Integer>();
-		lista.put(new Product(1, Category.FOOD, "Mittomén", Manufacturer.APPLE, new Size(10), 500, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))), 10);
+		lista.put(new Product(1, Category.FOOD, "Mittomén", Manufacturer.APPLE, new Size(10), 500, 
+				Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))), 10);
 		Customer cust = new Customer(0, "Teszt", new Address("Hun", "Miskolc", "Egyetemváros", 11));
 		Order order = new Order(1, lista, cust);
-		order.add(new Product(2, Category.FOOD, "Mittomén", Manufacturer.APPLE, new Size(10), 500, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))), -2);
+		order.add(new Product(2, Category.FOOD, "Mittomén", Manufacturer.APPLE, new Size(10), 500, 
+				Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))), -2);
 	}
 	
 	@Test
@@ -170,6 +173,36 @@ public class OrderTest {
 	}
 	
 	@Test
+	public void testEqualsWithSelf() {
+		Map<Product, Integer> lista = new HashMap<Product, Integer>();
+		Product termek = new Product(1, Category.FOOD, "Mittomén", Manufacturer.APPLE, new Size(10), 10, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
+		lista.put(termek, 10);
+		Customer cust = new Customer(1, "Teszt", new Address("Hun", "Miskolc", "Egyetemváros", 11));
+		Order order = new Order(1, lista, cust);
+		assertEquals(true, order.equals(order));
+	}
+	
+	@Test
+	public void testEqualsWithNull() {
+		Map<Product, Integer> lista = new HashMap<Product, Integer>();
+		Product termek = new Product(1, Category.FOOD, "Mittomén", Manufacturer.APPLE, new Size(10), 10, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
+		lista.put(termek, 10);
+		Customer cust = new Customer(1, "Teszt", new Address("Hun", "Miskolc", "Egyetemváros", 11));
+		Order order = new Order(1, lista, cust);
+		assertEquals(false, order.equals(null));
+	}
+	
+	@Test
+	public void testEqualsWithDifferentClass() {
+		Map<Product, Integer> lista = new HashMap<Product, Integer>();
+		Product termek = new Product(1, Category.FOOD, "Mittomén", Manufacturer.APPLE, new Size(10), 10, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
+		lista.put(termek, 10);
+		Customer cust = new Customer(1, "Teszt", new Address("Hun", "Miskolc", "Egyetemváros", 11));
+		Order order = new Order(1, lista, cust);
+		assertEquals(false, order.equals("string"));
+	}
+	
+	@Test
 	public void testEqualsWithDifferentOrderID() {
 		Map<Product, Integer> lista = new HashMap<Product, Integer>();
 		Product termek = new Product(1, Category.FOOD, "Mittomén", Manufacturer.APPLE, new Size(10), 10, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
@@ -178,5 +211,26 @@ public class OrderTest {
 		Order order = new Order(1, lista, cust);
 		Order order2 = new Order(2, lista, cust);
 		assertEquals(false, order.equals(order2));
+	}
+	
+	@Test
+	public void testToString(){
+		Map<Product, Integer> lista = new HashMap<Product, Integer>();
+		Product termek = new Product(1, Category.FOOD, "Mittomén", Manufacturer.APPLE, new Size(10), 10, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
+		lista.put(termek, 10);
+		Customer cust = new Customer(1, "Teszt", new Address("Hun", "Miskolc", "Egyetemváros", 11));
+		Order order = new Order(1, lista, cust);
+		assertEquals("Order [orderID=1, products={Product [productNumber=1, category=Food, name=Mittomén, manufacturer=APPLE, size=Size [width=10, height=10, depth=10], weight=10.0, restriction=0]=10}, customer=Customer [customerID=1, name=Teszt, address=Address [country=Hun, city=Miskolc, street=Egyetemváros, number=11]]]" , order.toString());
+	}
+	
+	@Test
+	public void testHashCode(){
+		Map<Product, Integer> lista = new HashMap<Product, Integer>();
+		Product termek = new Product(1, Category.FOOD, "Mittomén", Manufacturer.APPLE, new Size(10), 10, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
+		lista.put(termek, 10);
+		Customer cust = new Customer(1, "Teszt", new Address("Hun", "Miskolc", "Egyetemváros", 11));
+		Order order = new Order(1, lista, cust);
+		Order order2 = new Order(1, lista, cust);
+		assertTrue(order.hashCode() == order2.hashCode());
 	}
 }
