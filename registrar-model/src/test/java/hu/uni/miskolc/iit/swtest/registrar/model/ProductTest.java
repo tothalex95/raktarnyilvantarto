@@ -108,11 +108,6 @@ public class ProductTest {
 		Product butter2 = new Product(3, Category.FOOD, "sajt", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
 		assertEquals(false, butter.equals(butter2));
 	}
-	public void testEqualsObjectWithNullName(){
-		Product butter = new Product(3, Category.FOOD, null, Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
-		Product butter2 = new Product(3, Category.FOOD, "sajt", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
-		assertEquals(false, butter.equals(butter2));
-	}
 	@Test
 	public void testEqualsObjectWithDifferentManufacturer() {
 		Product butter = new Product(3, Category.FOOD, "vaj", Manufacturer.UMBRELLACORP, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class)));
