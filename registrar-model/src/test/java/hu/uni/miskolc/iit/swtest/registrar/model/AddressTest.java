@@ -104,5 +104,30 @@ public class AddressTest {
 		Address b = new Address("X", "Y", "Z", 2);
 		assertEquals("(X,Y,Z,1)=(X,Y,Z,2)", false, a.equals(b));
 	}
+	
+	@Test
+	public void testHashCode(){
+		Address a = new Address("X", "Y", "Z", 1);
+		Address b = new Address("X", "Y", "Z", 1);
+		assertTrue(a.hashCode()==b.hashCode());
+	}
+	
+	@Test
+	public void testEqualObjectWithItSelf(){
+		Address a = new Address("X", "Y", "Z", 1);
+		assertTrue(a.equals(a));
+	}
+	
+	@Test
+	public void testEqualsObjectWithNull(){
+		Address a = new Address("X", "Y", "Z", 1);
+		assertFalse(a.equals(null));
+	}
+	
+	@Test
+	public void testEqualsObjectWithDiffernetObject(){
+		Address a = new Address("X", "Y", "Z", 1);
+		assertFalse(a.equals("asd"));
+	}
 
 }
