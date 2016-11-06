@@ -58,4 +58,9 @@ public class BoxTest {
 		BoxSize boxsize = BoxSize.BIG; 
 		assertEquals(box.getBoxSize().getSize(), boxsize.getSize());
 	}
+	
+	@Test
+	public void testValueOf(){
+		assertEquals(BoxSize.BIG, BoxSize.valueOf("BIG"));
+	}
 }
