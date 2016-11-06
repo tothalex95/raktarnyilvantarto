@@ -25,5 +25,10 @@ public class CategoryTest {
 	public void testToStringIndustrialEquipment() {
 		assertEquals("toString()=Industrial Equipment", "Industrial Equipment", Category.INDUSTRIAL_EQUIPMENT.toString());
 	}
+	
+	@Test
+	public void testValueOf() {
+		assertEquals(Category.FOOD, Category.valueOf("FOOD"));
+	}
 
 }
