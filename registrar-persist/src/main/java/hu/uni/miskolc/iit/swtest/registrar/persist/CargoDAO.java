@@ -11,7 +11,7 @@ public interface CargoDAO {
 	public Collection<Cargo> readCargosBySource(String source);
 	public Collection<Cargo> readCargosDestination(String destination);
 
-	public Cargo readCargo(Cargo cargo) throws CargoNotFoundException;
+	public Cargo readCargo(long id) throws CargoNotFoundException;
 
 	public void updateCargo(Cargo cargo) throws CargoNotFoundException;
 

@@ -15,7 +15,7 @@ public interface BoxDAO {
 	public Collection<Box> readBoxesByProduct(Product product);
 	public Collection<Box> readBoxesByBoxSize(BoxSize boxsize);
 	
-	public Box readBox(Box box) throws BoxNotFoundException;
+	public Box readBox(long id) throws BoxNotFoundException;
 	
 	public void updateBox(Box box) throws BoxNotFoundException;
 	
