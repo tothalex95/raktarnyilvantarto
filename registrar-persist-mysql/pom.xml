@@ -37,17 +37,48 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.4.2</version>
 				<configuration>
-					<!-- <environmentVariables>
-						<SOME_ENV_VARIABLE>some value</SOME_ENV_VARIABLE>
-					</environmentVariables> -->
-					<systemProperties>
-						<property>
-							<name>database.host</name>
-							<value>${thisCanBePassedIn}</value>
-						</property>
-					</systemProperties>
+					<excludes>
+						<exclude>**/*IntegrationTest.java</exclude>
+					</excludes>
 				</configuration>
+				<executions>
+					<execution>
+						<id>integration-test</id>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<phase>integration-test</phase>
+						<configuration>
+							<systemPropertyVariables>
+								<database.host>${database.host}</database.host>
+								<database.port>${database.port}</database.port>
+								<database.db>${database.db}</database.db>
+								<database.user>${database.user}</database.user>
+								<database.password>${database.password}</database.password>
+								<mybatis.config.path>${mybatis.config}</mybatis.config.path>
+							</systemPropertyVariables>
+							<excludes>
+								<exclude>none</exclude>
+							</excludes>
+							<includes>
+								<include>**/*IntegrationTest.java</include>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>mysqlTemplate</id>
+			<properties>
+				<database.host>localhost</database.host>
+				<database.port>3306</database.port>
+				<database.db>librarin</database.db>
+				<database.user>lily</database.user>
+				<database.password>lily</database.password>
+			</properties>
+		</profile>
+	</profiles>
 </project>
