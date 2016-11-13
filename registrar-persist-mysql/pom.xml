@@ -28,6 +28,11 @@
 			<artifactId>registrar-persist</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.4.1</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<defaultGoal>package</defaultGoal>
@@ -75,9 +80,9 @@
 			<properties>
 				<database.host>localhost</database.host>
 				<database.port>3306</database.port>
-				<database.db>librarin</database.db>
-				<database.user>lily</database.user>
-				<database.password>lily</database.password>
+				<database.db>registrar</database.db>
+				<database.user>alex</database.user>
+				<database.password>123456</database.password>
 			</properties>
 		</profile>
 	</profiles>

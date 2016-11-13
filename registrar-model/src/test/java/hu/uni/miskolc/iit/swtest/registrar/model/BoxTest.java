@@ -48,7 +48,7 @@ public class BoxTest {
 	@Test
 	public void testToString(){
 		Box box = new Box(1, new Product(1, Category.FOOD, "Mittomén", Manufacturer.APPLE, new Size(10), 10, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))), 5, BoxSize.BIG);
-		assertEquals("Box [product=Product [productNumber=1, category=Food, name=Mittomén, manufacturer=APPLE, size=Size [width=10, height=10, depth=10], weight=10.0, restriction=0], count=5, boxSize=BIG]", box.toString());
+		assertEquals("Box [id=1, product=Product [productNumber=1, category=Food, name=Mittomén, manufacturer=APPLE, size=Size [width=10, height=10, depth=10], weight=10.0, restriction=0], count=5, boxSize=BIG]", box.toString());
 	}
 	
 	
