@@ -4,4 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.CustomerMapper">
 
+	<resultMap type="Customer" id="CustomerResultMap">
+		<id property="customerID" column="id"/>
+		<result property="name" column="name"/>
+		<result property="address" column="" javaType="Address" jdbcType=""/>
+	</resultMap>
+
 </mapper>

@@ -5,6 +5,11 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="Customer" type="hu.uni.miskolc.iit.swtest.registrar.model.Customer"/>
+		<typeAlias alias="Product" type="hu.uni.miskolc.iit.swtest.registrar.model.Product"/>
+		<typeAlias alias="Positions" type="hu.uni.miskolc.iit.swtest.registrar.model.Positions"/>
+		<typeAlias alias="Box" type="hu.uni.miskolc.iit.swtest.registrar.model.Box"/>
+		<typeAlias alias="Order" type="hu.uni.miskolc.iit.swtest.registrar.model.Order"/>
+		<typeAlias alias="Cargo" type="hu.uni.miskolc.iit.swtest.registrar.model.Cargo"/>
 	</typeAliases>
 	<typeHandlers>
 	</typeHandlers>
@@ -22,5 +27,10 @@
 
 	<mappers>
 		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/CustomerMapper.xml" />
+		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/ProductMapper.xml" />
+		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/PositionsMapper.xml" />
+		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/BoxMapper.xml" />
+		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/OrderMapper.xml" />
+		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/CargoMapper.xml" />
 	</mappers>
 </configuration>

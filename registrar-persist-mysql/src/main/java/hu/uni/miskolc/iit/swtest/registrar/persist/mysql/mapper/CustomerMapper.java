@@ -13,7 +13,7 @@ public interface CustomerMapper {
 	
 	public Collection<Customer> selectCustomersByName(String name);
 	
-	public Collection<Customer> selectCustomersByAddress(Address address);
+	public Collection<Customer> selectCustomersByAddress(String address);
 	
 	public Collection<Customer> selectCustomersByCountry(String country);
 	
@@ -26,5 +26,7 @@ public interface CustomerMapper {
 	public void updateCustomer(@Param("customer") Customer customer);
 	
 	public void deleteCustomer(@Param("customer") Customer customer);
+	
+	public void recordCustomer(@Param("name") String name, @Param("address") String address);
 	
 }
