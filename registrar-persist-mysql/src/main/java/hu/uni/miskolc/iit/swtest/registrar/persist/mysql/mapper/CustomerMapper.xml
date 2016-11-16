@@ -10,4 +10,32 @@
 		<result property="address" column="" javaType="Address" jdbcType=""/>
 	</resultMap>
 
+	<select id="selectCustomers" resultMap="CustomerResultMap">
+		select * from customer;
+	</select>
+	
+	<select id="selectCustomersByName" resultMap="CustomerResultMap">
+		select * from customer where name like #{name};
+	</select>
+	
+	<select id="selectCustomersByAddress" resultMap="CustomerResultMap">
+		select * from customer where address = '#{address.getCountry()}:#{address.getCity()}:#{address.getStreet()}:#{address.getNumber()}';
+	</select>
+	
+	<select id="selectCustomersByCountry" resultMap="CustomerResultMap">
+		select * from customer where address like #{country};
+	</select>
+	
+	<select id="selectCustomersByCity" resultMap="CustomerResultMap">
+		select * from customer where address like '#{country}:#{city}';
+	</select>
+	
+	<select id="selectCustomersByStreet">
+		select * from customer where address like '#{country}:#{city}:#{street}';
+	</select>
+	
+	<select id="selectCustomerByID" resultMap="CustomerResultMap">
+		select * from customer where id = #{id};
+	</select>
+
 </mapper>

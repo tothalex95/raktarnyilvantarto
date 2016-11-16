@@ -74,11 +74,11 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public Collection<Customer> readCustomersByAddress(Address a) {
+	public Collection<Customer> readCustomersByAddress(Address address) {
 		Collection<Customer> result = new ArrayList<Customer>();
 		SqlSession session = sqlSessionFactory.openSession();
 		CustomerMapper customerMapper = session.getMapper(CustomerMapper.class);
-		result = customerMapper.selectCustomersByAddress(String.join(":", a.getCountry(), a.getCity(), a.getStreet(), String.valueOf(a.getNumber())));
+		result = customerMapper.selectCustomersByAddress(address);
 		session.commit();
 		session.close();
 		return result;

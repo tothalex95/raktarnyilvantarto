@@ -11,17 +11,17 @@ public interface CustomerMapper {
 
 	public Collection<Customer> selectCustomers();
 	
-	public Collection<Customer> selectCustomersByName(String name);
+	public Collection<Customer> selectCustomersByName(@Param("name") String name);
 	
-	public Collection<Customer> selectCustomersByAddress(String address);
+	public Collection<Customer> selectCustomersByAddress(@Param("address") Address address);
 	
-	public Collection<Customer> selectCustomersByCountry(String country);
+	public Collection<Customer> selectCustomersByCountry(@Param("country") String country);
 	
-	public Collection<Customer> selectCustomersByCity(String country, String city);
+	public Collection<Customer> selectCustomersByCity(@Param("country") String country, @Param("city") String city);
 	
-	public Collection<Customer> selectCustomersByStreet(String country, String city, String street);
+	public Collection<Customer> selectCustomersByStreet(@Param("country") String country, @Param("city") String city, @Param("street") String street);
 	
-	public Customer selectCustomerByID(long id);
+	public Customer selectCustomerByID(@Param("id") long id);
 	
 	public void updateCustomer(@Param("customer") Customer customer);
 	
