@@ -27,6 +27,6 @@ public interface ProductMapper {
 	
 	public void deleteProduct(@Param("product") Product product);
 	
-	public void recordProduct();
+	public void recordProduct(@Param("category") String category, @Param("name") String name, @Param("manufacturer") String manufacturer);
 	
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.BoxMapper">
+
+	<resultMap type="Box" id="BoxResultMap">
+		<id property="id" column="id"/>
+		<result column="product"/>
+		<result property="count" column="count"/>
+		<result property="boxSize" column="boxSize"/>
+	</resultMap>
+
+	<select id="selectBoxes" resultMap="BoxResultMap">
+		select * from boxtable;
+	</select>
+	
+	<select id="selectBoxesByWeight" resultMap="BoxResultMap">
+		select * from boxtable;
+	</select>
+	
+	<select id="selectBoxByID" resultMap="BoxResultMap">
+		select * from boxtable where id = #{id};
+	</select>
+	
+	<delete id="deleteBox">
+		delete from boxtable where id = #{box.id};
+	</delete>
+
+</mapper>

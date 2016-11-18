@@ -1,1 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.ProductMapper">
+
+	<resultMap type="Product" id="ProductResultMap">
+		<id property="productNumber" column="id"/>
+		<result property="category" column="category"/>
+		<result property="name" column="name"/>
+		<result property="manufacturer" column="manufacturer"/>
+		
+		<result property="weight" column="weight"/>
+		<result property="restriction" column="restriction"/>
+	</resultMap>
+	
+	<select id="selectProducts" resultMap="ProductResultMap">
+		select * from producttable;
+	</select>
+	
+	<select id="selectProductsByCategory" resultMap="ProductResultMap">
+		select * from producttable where category = #{category};
+	</select>
+	
+	<select id="selectProductsByName" resultMap="ProductResultMap">
+		select * from producttable where name like #{name};
+	</select>
+	
+	<select id="selectProductsByManufacturer" resultMap="ProductResultMap">
+		select * from producttable where manufacturer like #{manufacturer};
+	</select>
+	
+	<select id="selectProductsBySize" resultMap="ProductResultMap">
+		select * from producttable;
+	</select>
+
+	<delete id="deleteProduct">
+		delete from producttable where id = #{product.productNumber};
+	</delete>
+
+</mapper>
