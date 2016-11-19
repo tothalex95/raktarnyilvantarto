@@ -11,39 +11,39 @@
 	</resultMap>
 
 	<select id="selectCustomers" resultMap="CustomerResultMap">
-		select * from customertable;
+		select * from customerTable;
 	</select>
 	
 	<select id="selectCustomersByName" resultMap="CustomerResultMap">
-		select * from customertable where name like #{name};
+		select * from customerTable where name like #{name};
 	</select>
 	
 	<select id="selectCustomersByAddress" resultMap="CustomerResultMap">
-		select * from customertable where address = '#{address.country}:#{address.city}:#{address.street}:#{address.number}';
+		select * from customerTable where address = '#{address.country}:#{address.city}:#{address.street}:#{address.number}';
 	</select>
 	
 	<select id="selectCustomersByCountry" resultMap="CustomerResultMap">
-		select * from customertable where address like #{country};
+		select * from customerTable where address like #{country};
 	</select>
 	
 	<select id="selectCustomersByCity" resultMap="CustomerResultMap">
-		select * from customertable where address like '#{country}:#{city}';
+		select * from customerTable where address like '#{country}:#{city}';
 	</select>
 	
 	<select id="selectCustomersByStreet" resultMap="CustomerResultMap">
-		select * from customertable where address like '#{country}:#{city}:#{street}';
+		select * from customerTable where address like '#{country}:#{city}:#{street}';
 	</select>
 	
 	<select id="selectCustomerByID" resultMap="CustomerResultMap">
-		select * from customertable where id = #{id};
+		select * from customerTable where id = #{id};
 	</select>
 	
 	<update id="updateCustomer">
-		update customertable set name = #{customer.name} where id = #{customer.customerID};
+		update customerTable set name = #{customer.name} where id = #{customer.customerID};
 	</update>
 	
 	<delete id="deleteCustomer">
-		delete from customertable where id = #{customer.customerID};
+		delete from customerTable where id = #{customer.customerID};
 	</delete>
 
 </mapper>
