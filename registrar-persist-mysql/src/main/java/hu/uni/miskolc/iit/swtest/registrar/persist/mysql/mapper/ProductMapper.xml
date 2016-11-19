@@ -15,27 +15,27 @@
 	</resultMap>
 	
 	<select id="selectProducts" resultMap="ProductResultMap">
-		select * from producttable;
+		select * from productTable;
 	</select>
 	
 	<select id="selectProductsByCategory" resultMap="ProductResultMap">
-		select * from producttable where category = #{category};
+		select * from productTable where category = #{category};
 	</select>
 	
 	<select id="selectProductsByName" resultMap="ProductResultMap">
-		select * from producttable where name like #{name};
+		select * from productTable where name like #{name};
 	</select>
 	
 	<select id="selectProductsByManufacturer" resultMap="ProductResultMap">
-		select * from producttable where manufacturer like #{manufacturer};
+		select * from productTable where manufacturer like #{manufacturer};
 	</select>
 	
 	<select id="selectProductsBySize" resultMap="ProductResultMap">
-		select * from producttable;
+		select * from productTable;
 	</select>
 
 	<delete id="deleteProduct">
-		delete from producttable where id = #{product.productNumber};
+		delete from productTable where id = #{product.productNumber};
 	</delete>
 
 </mapper>
