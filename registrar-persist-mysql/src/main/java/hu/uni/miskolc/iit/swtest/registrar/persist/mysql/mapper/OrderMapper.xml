@@ -1,1 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.OrderMapper">
+
+	<resultMap type="Order" id="OrderResultMap">
+		<id property="id" column="id"/>
+		<result property="orderId" column="orderId"/>
+		<result property="product" column="product"/>
+		<result property="customer" column="customer"/>
+		<result property="count" column="count"/>
+	</resultMap>
+	
+	<select id="selectOrders" resultMap="ProductResultMap">
+		select * from orderTable;
+	</select>
+	
+	<select id="selectOrdersByProductId" resultMap="ProductResultMap">
+		select * from orderTable where product = #{product};
+	</select>
+	
+	<select id="selectOrdersByCustomerID" resultMap="ProductResultMap">
+		select * from orderTable where customer = #{customer};
+	</select>
+	
+	<select id="selectOredersByCount" resultMap="ProductResultMap">
+		select * from orderTable where count = #{count};
+	</select>
+	
+	<select id="selectOrdersByOrderId" resultMap="ProductResultMap">
+		select * from orderTable where orderId = #{orderId};
+	</select>
+
+	<delete id="deleteOrder">
+		delete from orderTable where orderId = #{order.id};
+	</delete>
+
+</mapper>
