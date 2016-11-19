@@ -12,19 +12,19 @@
 	</resultMap>
 
 	<select id="selectBoxes" resultMap="BoxResultMap">
-		select * from boxtable;
+		select * from boxTable;
 	</select>
 	
 	<select id="selectBoxesByWeight" resultMap="BoxResultMap">
-		select * from boxtable;
+		select * from boxTable;
 	</select>
 	
 	<select id="selectBoxByID" resultMap="BoxResultMap">
-		select * from boxtable where id = #{id};
+		select * from boxTable where id = #{id};
 	</select>
 	
 	<delete id="deleteBox">
-		delete from boxtable where id = #{box.id};
+		delete from boxTable where id = #{box.id};
 	</delete>
 
 </mapper>
