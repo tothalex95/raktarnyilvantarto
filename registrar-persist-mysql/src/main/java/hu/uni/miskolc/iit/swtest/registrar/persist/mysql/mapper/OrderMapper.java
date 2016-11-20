@@ -17,7 +17,7 @@ public interface OrderMapper {
 	
 	public Collection<Order> selectOrdersByCustomerID(int customer);
 	
-	public Collection<Order> selectOredersByCount(int count);
+	public Collection<Order> selectOrdersByCount(int count);
 	
 	//public Order selectOrdersById(int id);
 	

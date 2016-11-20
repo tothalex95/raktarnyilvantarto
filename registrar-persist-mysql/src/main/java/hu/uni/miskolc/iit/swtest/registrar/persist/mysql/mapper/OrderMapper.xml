@@ -24,7 +24,7 @@
 		select * from orderTable where customer = #{customer};
 	</select>
 	
-	<select id="selectOredersByCount" resultMap="OrderResultMap">
+	<select id="selectOrdersByCount" resultMap="OrderResultMap">
 		select * from orderTable where count = #{count};
 	</select>
 	
