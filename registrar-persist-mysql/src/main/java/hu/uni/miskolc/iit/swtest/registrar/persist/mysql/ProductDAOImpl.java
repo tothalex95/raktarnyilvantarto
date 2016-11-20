@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Properties;
 
@@ -51,50 +52,97 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public Collection<Product> readProducts() {
-		// TODO Auto-generated method stub
-		return null;
+		Collection<Product> result = new ArrayList<Product>();
+		SqlSession session = this.sqlSessionFactory.openSession();
+		ProductMapper productMapper = session.getMapper(ProductMapper.class);
+		result = productMapper.selectProducts();
+		session.commit();
+		session.close();
+		return result;
 	}
 
 	@Override
 	public Collection<Product> readProductsByCategory(Category category) {
-		// TODO Auto-generated method stub
-		return null;
+		Collection<Product> result = new ArrayList<Product>();
+		SqlSession session = this.sqlSessionFactory.openSession();
+		ProductMapper productMapper = session.getMapper(ProductMapper.class);
+		result = productMapper.selectProductsByCategory(category);
+		session.commit();
+		session.close();
+		return result;
 	}
 
 	@Override
 	public Collection<Product> readProductsByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		Collection<Product> result = new ArrayList<Product>();
+		SqlSession session = this.sqlSessionFactory.openSession();
+		ProductMapper productMapper = session.getMapper(ProductMapper.class);
+		result = productMapper.selectProductsByName(name);
+		session.commit();
+		session.close();
+		return result;
 	}
 
 	@Override
 	public Collection<Product> readProductsByManufacturer(Manufacturer manufacturer) {
-		// TODO Auto-generated method stub
-		return null;
+		Collection<Product> result = new ArrayList<Product>();
+		SqlSession session = this.sqlSessionFactory.openSession();
+		ProductMapper productMapper = session.getMapper(ProductMapper.class);
+		result = productMapper.selectProductsByManufactuter(manufacturer);
+		session.commit();
+		session.close();
+		return result;
 	}
 
 	@Override
 	public Collection<Product> readProductsBySize(Size size) {
-		// TODO Auto-generated method stub
-		return null;
+		Collection<Product> result = new ArrayList<Product>();
+		SqlSession session = this.sqlSessionFactory.openSession();
+		ProductMapper productMapper = session.getMapper(ProductMapper.class);
+		result = productMapper.selectProductsBySize(size);
+		session.commit();
+		session.close();
+		return result;
 	}
 
 	@Override
 	public Product readProduct(long productNumber) throws ProductNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		Product result = null;
+		SqlSession session = this.sqlSessionFactory.openSession();
+		ProductMapper productMapper = session.getMapper(ProductMapper.class);
+		result = productMapper.selectProductById(productNumber);
+		session.commit();
+		session.close();
+		if (result==null) {
+			throw new ProductNotFoundException(String.format("There is no product with id<%d>", productNumber));
+		}
+		return result;
 	}
 
 	@Override
-	public Product updateProduct(Product product) throws ProductNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateProduct(Product product) throws ProductNotFoundException {
+		SqlSession session = this.sqlSessionFactory.openSession();
+		try {
+			ProductMapper mapper = session.getMapper(ProductMapper.class);
+			mapper.updateProduct(product);
+		} catch (Exception e) {
+			throw new ProductNotFoundException(e);
+		}
+		session.commit();
+		session.close();
 	}
 
 	@Override
-	public Product deleteProduct(Product product) throws ProductNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteProduct(Product product) throws ProductNotFoundException {
+		SqlSession session = this.sqlSessionFactory.openSession();
+		try {
+			ProductMapper mapper = session.getMapper(ProductMapper.class);
+			mapper.deleteProduct(product);
+		} catch (Exception e) {
+			throw new ProductNotFoundException(e);
+		}
+		session.commit();
+		session.close();
 	}
 
 }

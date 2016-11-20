@@ -19,9 +19,9 @@ public interface ProductDAO {
 	
 	public Product readProduct(long productNumber) throws ProductNotFoundException;
 	
-	public Product updateProduct(Product product) throws ProductNotFoundException;
+	public void updateProduct(Product product) throws ProductNotFoundException;
 	
-	public Product deleteProduct(Product product) throws ProductNotFoundException;
+	public void deleteProduct(Product product) throws ProductNotFoundException;
 	
 	
 	
