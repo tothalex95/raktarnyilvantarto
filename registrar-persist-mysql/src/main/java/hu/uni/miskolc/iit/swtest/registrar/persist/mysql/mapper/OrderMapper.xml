@@ -12,23 +12,23 @@
 		<result property="count" column="count"/>
 	</resultMap>
 	
-	<select id="selectOrders" resultMap="ProductResultMap">
+	<select id="selectOrders" resultMap="OrderResultMap">
 		select * from orderTable;
 	</select>
 	
-	<select id="selectOrdersByProductId" resultMap="ProductResultMap">
+	<select id="selectOrdersByProductId" resultMap="OrderResultMap">
 		select * from orderTable where product = #{product};
 	</select>
 	
-	<select id="selectOrdersByCustomerID" resultMap="ProductResultMap">
+	<select id="selectOrdersByCustomerID" resultMap="OrderResultMap">
 		select * from orderTable where customer = #{customer};
 	</select>
 	
-	<select id="selectOredersByCount" resultMap="ProductResultMap">
+	<select id="selectOredersByCount" resultMap="OrderResultMap">
 		select * from orderTable where count = #{count};
 	</select>
 	
-	<select id="selectOrdersByOrderId" resultMap="ProductResultMap">
+	<select id="selectOrdersByOrderId" resultMap="OrderResultMap">
 		select * from orderTable where orderId = #{orderId};
 	</select>
 
