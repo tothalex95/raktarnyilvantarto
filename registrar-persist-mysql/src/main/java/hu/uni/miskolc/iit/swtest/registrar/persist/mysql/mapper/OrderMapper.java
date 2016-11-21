@@ -21,7 +21,7 @@ public interface OrderMapper {
 	
 	//public Order selectOrdersById(int id);
 	
-	//public void updateOrder(@Param("order") Order order);
+	public void updateOrder(@Param("order") Order order);
 	
 	public void deleteOrder(@Param("order") Order order);	
 }

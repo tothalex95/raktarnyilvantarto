@@ -35,5 +35,9 @@
 	<delete id="deleteOrder">
 		delete from orderTable where orderId = #{order.id};
 	</delete>
+	
+	<update id="updateOrder">
+		update orderTable set count=#{order.count} where orderId=#{order.orderID}
+	</update>
 
 </mapper>

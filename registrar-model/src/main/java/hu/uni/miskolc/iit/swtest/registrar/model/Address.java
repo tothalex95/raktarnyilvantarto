@@ -18,6 +18,18 @@ public class Address {
 		this.street = street;
 		this.number = number;
 	}
+	
+	public Address(String address) {
+		String[] tmp = address.split(":");
+		if (tmp[0] == null || tmp[0].isEmpty()) throw new IllegalArgumentException("The country cannot be empty.");
+		else if (tmp[1] == null || tmp[1].isEmpty()) throw new IllegalArgumentException("The city cannot be empty.");
+		else if (tmp[2] == null || tmp[2].isEmpty()) throw new IllegalArgumentException("The street cannot be empty.");
+		else if (Integer.parseInt(tmp[3]) < 1) throw new IllegalArgumentException("The number must be positive.");
+		this.country = tmp[0];
+		this.city = tmp[1];
+		this.street = tmp[2];
+		this.number = Integer.parseInt(tmp[3]);
+	}
 
 	public String getCountry() {
 		return country;
