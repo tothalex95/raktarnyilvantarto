@@ -42,8 +42,15 @@ private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	
 	@Override
 	public void createBox(Box box) throws ExistingBoxException {
-		// TODO Auto-generated method stub
-
+		/*Collection<Box> similairBoxes = readBoxesByProduct(box.getProduct());
+		if (!similairBoxes.isEmpty()) {
+			throw new ExistingBoxException();
+		}*/
+		SqlSession session = sqlSessionFactory.openSession();
+		BoxMapper mapper = session.getMapper(BoxMapper.class);
+		mapper.recordBox(box.getProduct().getProductNumber(), box.getCount(), box.getBoxSize());
+		session.commit();
+		session.close();
 	}
 
 	@Override
@@ -59,20 +66,41 @@ private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 
 	@Override
 	public Collection<Box> readBoxesByWeight(float weight) {
-		// TODO Auto-generated method stub
-		return null;
+		Collection<Box> tmp = new ArrayList<Box>();
+		SqlSession session = sqlSessionFactory.openSession();
+		BoxMapper mapper = session.getMapper(BoxMapper.class);
+		tmp = mapper.selectBoxes();
+		Collection<Box> result = new ArrayList<>();
+		for (Box box : tmp) {
+			if (box.getWeight()==weight) {
+				result.add(box);
+			}
+		}
+		session.commit();
+		session.close();
+		return result;
 	}
 
 	@Override
 	public Collection<Box> readBoxesByProduct(Product product) {
-		// TODO Auto-generated method stub
-		return null;
+		Collection<Box> result = new ArrayList<Box>();
+		SqlSession session = sqlSessionFactory.openSession();
+		BoxMapper mapper = session.getMapper(BoxMapper.class);
+		result = mapper.selectBoxesByProduct(product);
+		session.commit();
+		session.close();
+		return result;
 	}
 
 	@Override
 	public Collection<Box> readBoxesByBoxSize(BoxSize boxsize) {
-		// TODO Auto-generated method stub
-		return null;
+		Collection<Box> result = new ArrayList<Box>();
+		SqlSession session = sqlSessionFactory.openSession();
+		BoxMapper mapper = session.getMapper(BoxMapper.class);
+		result = mapper.selectBoxesByBoxSize(boxsize);
+		session.commit();
+		session.close();
+		return result;
 	}
 
 	@Override

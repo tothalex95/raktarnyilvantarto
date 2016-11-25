@@ -2,28 +2,51 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.BoxMapper">
+<mapper
+	namespace="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.BoxMapper">
 
 	<resultMap type="Box" id="BoxResultMap">
-		<id property="id" column="id"/>
-		<result column="product"/>
-		<result property="count" column="count"/>
-		<result property="boxSize" column="boxSize"/>
+		<id property="id" column="id" />
+		<result column="product" />
+		<result property="count" column="count" />
+		<result property="boxSize" column="boxSize" />
 	</resultMap>
 
 	<select id="selectBoxes" resultMap="BoxResultMap">
 		select * from boxTable;
 	</select>
-	
+
+	<select id="selectBoxesByProduct" resultMap="BoxResultMap">
+		select * from
+		boxTable where productId = #{product.id};
+	</select>
+
 	<select id="selectBoxesByWeight" resultMap="BoxResultMap">
-		select * from boxTable;
+		select * from
+		boxTable;
 	</select>
-	
+
+	<select id="selectBoxesByBoxSize" resultMap="BoxResultMap">
+		select * from
+		boxTable where boxSize = #{boxSize};
+	</select>
+
 	<select id="selectBoxByID" resultMap="BoxResultMap">
-		select * from boxTable where id = #{id};
+		select * from boxTable
+		where id = #{id};
 	</select>
-	
-	<delete id="deleteBox">
+
+	<insert id="recordBox">
+		insert into box (product, count, boxSize) values
+		(#{product},#{count},#{boxSize});
+	</insert>
+
+	<update id="updateBox" parameterType="Box">
+		delete from boxTable where
+		id = #{box.id};
+	</update>
+
+	<delete id="deleteBox" parameterType="Box">
 		delete from boxTable where id = #{box.id};
 	</delete>
 
