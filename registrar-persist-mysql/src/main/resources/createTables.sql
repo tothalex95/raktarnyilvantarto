@@ -13,7 +13,10 @@ create table productTable (
 create table customerTable (
 	id integer primary key,
 	name varchar(50),
-	address varchar(100)
+	country varchar(50),
+	city varchar(50),
+	street varchar(50),
+	num integer
 );
 
 create table positionsTable (

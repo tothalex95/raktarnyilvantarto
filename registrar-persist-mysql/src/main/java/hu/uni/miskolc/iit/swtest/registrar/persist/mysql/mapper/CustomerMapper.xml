@@ -2,48 +2,73 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.CustomerMapper">
+<mapper
+	namespace="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.CustomerMapper">
 
 	<resultMap type="Customer" id="CustomerResultMap">
-		<id property="customerID" column="id"/>
-		<result property="name" column="name"/>
-		<!-- <result property="address" column="address" javaType="hu.uni.miskolc.iit.swtest.registrar.model.Address" jdbcType="VARCHAR"/> -->
+		<id property="customerID" column="id" />
+		<result property="name" column="name" />
+		<association property="address"
+			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Address">
+			<result property="country" column="country" />
+			<result property="city" column="city" />
+			<result property="street" column="street" />
+			<result property="number" column="num" />
+		</association>
 	</resultMap>
 
 	<select id="selectCustomers" resultMap="CustomerResultMap">
-		select * from customerTable;
+		select * from
+		customerTable;
 	</select>
-	
+
 	<select id="selectCustomersByName" resultMap="CustomerResultMap">
-		select * from customerTable where name like #{name};
+		select * from
+		customerTable where name like #{name};
 	</select>
-	
+
 	<select id="selectCustomersByAddress" resultMap="CustomerResultMap">
-		select * from customerTable where address = '#{address.country}:#{address.city}:#{address.street}:#{address.number}';
+		select * from
+		customerTable where country like #{address.country} and city like
+		#{address.city} and street like #{address.street} and num =
+		#{address.number};
 	</select>
-	
+
 	<select id="selectCustomersByCountry" resultMap="CustomerResultMap">
-		select * from customerTable where address like #{country};
+		select * from
+		customerTable where country like #{country};
 	</select>
-	
+
 	<select id="selectCustomersByCity" resultMap="CustomerResultMap">
-		select * from customerTable where address like '#{country}:#{city}';
+		select * from
+		customerTable where country like #{country} and city like #{city};
 	</select>
-	
+
 	<select id="selectCustomersByStreet" resultMap="CustomerResultMap">
-		select * from customerTable where address like '#{country}:#{city}:#{street}';
+		select * from
+		customerTable where country like #{country} and city like #{city} and
+		street like #{street};
 	</select>
-	
+
 	<select id="selectCustomerByID" resultMap="CustomerResultMap">
-		select * from customerTable where id = #{id};
+		select * from
+		customerTable where id = #{id};
 	</select>
-	
-	<update id="updateCustomer">
-		update customerTable set name = #{customer.name} where id = #{customer.customerID};
+
+	<insert id="recordCustomer">
+		insert into customerTable (name, country, city,
+		street, num) values (#{name}, #{address.country}, #{address.city},
+		#{address.street}, #{address.number});
+	</insert>
+
+	<update id="updateCustomer" parameterType="Customer">
+		update customerTable
+		set name = #{customer.name} where id = #{customer.customerID};
 	</update>
-	
-	<delete id="deleteCustomer">
-		delete from customerTable where id = #{customer.customerID};
+
+	<delete id="deleteCustomer" parameterType="Customer">
+		delete from
+		customerTable where id = #{customer.customerID};
 	</delete>
 
 </mapper>

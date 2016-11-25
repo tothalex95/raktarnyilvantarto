@@ -12,21 +12,23 @@ import hu.uni.miskolc.iit.swtest.registrar.model.Size;
 public interface ProductMapper {
 
 	public Collection<Product> selectProducts();
-	
+
 	public Collection<Product> selectProductsByCategory(Category category);
-	
+
 	public Collection<Product> selectProductsByName(String name);
-	
+
 	public Collection<Product> selectProductsByManufactuter(Manufacturer manufacturer);
-	
+
 	public Collection<Product> selectProductsBySize(Size size);
-	
+
 	public Product selectProductById(long id);
-	
+
 	public void updateProduct(@Param("product") Product product);
-	
+
 	public void deleteProduct(@Param("product") Product product);
-	
-	public void recordProduct(@Param("category") String category, @Param("name") String name, @Param("manufacturer") String manufacturer);
-	
+
+	public void recordProduct(@Param("category") String category, @Param("name") String name,
+			@Param("manufacturer") String manufacturer, @Param("size") Size size, @Param("weight") float weight,
+			@Param("restriction") int restriction);
+
 }

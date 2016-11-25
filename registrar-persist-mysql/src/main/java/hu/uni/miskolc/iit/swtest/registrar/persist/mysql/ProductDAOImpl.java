@@ -26,9 +26,9 @@ public class ProductDAOImpl implements ProductDAO {
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 
 	private SqlSessionFactory sqlSessionFactory;
-	
-	public ProductDAOImpl(String mybatisConfigPath, String host, int port, String database, String user, String password)
-			throws FileNotFoundException {
+
+	public ProductDAOImpl(String mybatisConfigPath, String host, int port, String database, String user,
+			String password) throws FileNotFoundException {
 		File configFile = new File(mybatisConfigPath);
 		InputStream inputStream = new FileInputStream(configFile);
 		String url = String.format("jdbc:mysql://%s:%s/%s", host, port, database);
@@ -47,7 +47,8 @@ public class ProductDAOImpl implements ProductDAO {
 			throw new ExistingProductException();
 		SqlSession session = sqlSessionFactory.openSession();
 		ProductMapper productMapper = session.getMapper(ProductMapper.class);
-		productMapper.recordProduct("","","");
+		productMapper.recordProduct(product.getCategory().toString(), product.getName(),
+				product.getManufacturer().toString(), product.getSize(), product.getWeight(), product.getRestriction());
 	}
 
 	@Override
@@ -113,7 +114,7 @@ public class ProductDAOImpl implements ProductDAO {
 		result = productMapper.selectProductById(productNumber);
 		session.commit();
 		session.close();
-		if (result==null) {
+		if (result == null) {
 			throw new ProductNotFoundException(String.format("There is no product with id<%d>", productNumber));
 		}
 		return result;

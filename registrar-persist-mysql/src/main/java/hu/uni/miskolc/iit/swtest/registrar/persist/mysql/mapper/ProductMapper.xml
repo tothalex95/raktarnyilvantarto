@@ -2,40 +2,65 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.ProductMapper">
+<mapper
+	namespace="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.ProductMapper">
 
 	<resultMap type="Product" id="ProductResultMap">
-		<id property="productNumber" column="id"/>
-		<result property="category" column="category"/>
-		<result property="name" column="name"/>
-		<result property="manufacturer" column="manufacturer"/>
-		
-		<result property="weight" column="weight"/>
-		<result property="restriction" column="restriction"/>
+		<id property="productNumber" column="id" />
+		<result property="category" column="category" />
+		<result property="name" column="name" />
+		<result property="manufacturer" column="manufacturer" />
+		<result property="weight" column="weight" />
+		<result property="restriction" column="restriction" />
+		<association property="size"
+			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Size">
+			<result property="width" column="sizex" />
+			<result property="height" column="sizey" />
+			<result property="depth" column="sizez" />
+		</association>
 	</resultMap>
-	
+
 	<select id="selectProducts" resultMap="ProductResultMap">
-		select * from productTable;
-	</select>
-	
-	<select id="selectProductsByCategory" resultMap="ProductResultMap">
-		select * from productTable where category = #{category};
-	</select>
-	
-	<select id="selectProductsByName" resultMap="ProductResultMap">
-		select * from productTable where name like #{name};
-	</select>
-	
-	<select id="selectProductsByManufacturer" resultMap="ProductResultMap">
-		select * from productTable where manufacturer like #{manufacturer};
-	</select>
-	
-	<select id="selectProductsBySize" resultMap="ProductResultMap">
-		select * from productTable;
+		select * from
+		productTable;
 	</select>
 
-	<delete id="deleteProduct">
-		delete from productTable where id = #{product.productNumber};
+	<select id="selectProductsByCategory" resultMap="ProductResultMap">
+		select * from
+		productTable where category = #{category};
+	</select>
+
+	<select id="selectProductsByName" resultMap="ProductResultMap">
+		select * from
+		productTable where name like #{name};
+	</select>
+
+	<select id="selectProductsByManufacturer" resultMap="ProductResultMap">
+		select *
+		from productTable where manufacturer like #{manufacturer};
+	</select>
+
+	<select id="selectProductsBySize" resultMap="ProductResultMap">
+		select * from
+		productTable;
+	</select>
+
+	<insert id="recordProduct">
+		insert into product (category, name, manufacturer,
+		sizex, sizey, sizez, weight, restriction) values (#{category},
+		#{name}, #{manufacturer}, #{size.width}, #{size.height},
+		#{size.depth}, #{weight}, #{restriction});
+	</insert>
+
+	<update id="updateProduct" parameterType="Product">
+		update product set name
+		= #{product.name}, manufacturer = #{product.manufacturer} where id =
+		#{product.productNumber};
+	</update>
+
+	<delete id="deleteProduct" parameterType="Product">
+		delete from
+		productTable where id = #{product.productNumber};
 	</delete>
 
 </mapper>

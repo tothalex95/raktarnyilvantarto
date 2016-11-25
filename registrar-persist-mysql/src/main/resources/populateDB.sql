@@ -5,9 +5,9 @@ insert into productTable values(2,"FURNITURE","kanapé","BRAZZERS", 50,50,200,25
 insert into productTable values(3,"NARCOTICS","viagra","BRAZZERS", 1,1,1,4,0);
 insert into productTable values(4,"INDUSTRIAL_EQUIPMENT","lézerFolyosóAmiFelszeleteliACsajtAFilmben","UMBRELLACORP", 500,500,500,2500,5);
 
-insert into customerTable values(1, "Jani", "Miskolc:sarok:1");
-insert into customerTable values(2, "Feri", "Eger:templom:1");
-insert into customerTable values(3, "Pityu", "Bivalybasznád:basznám:1");
+insert into customerTable values(1, "Jani", "HU", "Miskolc", "sarok", 1);
+insert into customerTable values(2, "Feri", "HU", "Eger", "templom", 1);
+insert into customerTable values(3, "Pityu", "HU", "Bivalybasznád", "basznám", 1);
 
 insert into positionsTable values(1, 4, "passz1");
 insert into positionsTable values(2, 3, "passz2");

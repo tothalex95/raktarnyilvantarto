@@ -27,6 +27,6 @@ public interface CustomerMapper {
 	
 	public void deleteCustomer(@Param("customer") Customer customer);
 	
-	public void recordCustomer(@Param("name") String name, @Param("address") String address);
+	public void recordCustomer(@Param("name") String name, @Param("address") Address address);
 	
 }
