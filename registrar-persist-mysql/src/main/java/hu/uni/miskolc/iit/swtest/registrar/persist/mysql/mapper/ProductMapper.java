@@ -13,15 +13,15 @@ public interface ProductMapper {
 
 	public Collection<Product> selectProducts();
 
-	public Collection<Product> selectProductsByCategory(Category category);
+	public Collection<Product> selectProductsByCategory(@Param("category") Category category);
 
-	public Collection<Product> selectProductsByName(String name);
+	public Collection<Product> selectProductsByName(@Param("name") String name);
 
-	public Collection<Product> selectProductsByManufactuter(Manufacturer manufacturer);
+	public Collection<Product> selectProductsByManufactuter(@Param("manufacturer") Manufacturer manufacturer);
 
-	public Collection<Product> selectProductsBySize(Size size);
+	public Collection<Product> selectProductsBySize(@Param("size") Size size);
 
-	public Product selectProductById(long id);
+	public Product selectProductById(@Param("id") long id);
 
 	public void updateProduct(@Param("product") Product product);
 

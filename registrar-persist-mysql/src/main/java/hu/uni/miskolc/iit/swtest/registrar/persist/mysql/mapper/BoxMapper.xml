@@ -14,6 +14,7 @@
 		<association property="product" column="product"
 			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Product"
 			resultMap="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.ProductMapper.ProductResultMap" />
+			<!-- Boxsize?? -->
 	</resultMap>
 
 	<select id="selectBoxes" resultMap="BoxResultMap">

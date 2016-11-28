@@ -7,19 +7,24 @@
 
 	<resultMap type="Product" id="ProductResultMap">
 		<id property="productNumber" column="id" />
-		<result property="category" column="category" />
+		<result property="category" column="category" 
+			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Category"
+			jdbcType="VARCHAR"/>
 		<result property="name" column="name" />
 		<result property="manufacturer" column="manufacturer"
 			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Manufacturer"
 			jdbcType="VARCHAR" />
 		<result property="weight" column="weight" />
-		<result property="restriction" column="restriction" />
+		<result property="restriction" column="restriction" 
+			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Restriction"
+			jdbcType="INTEGER"/> <!-- ez kell ide??? -->
 		<association property="size"
 			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Size">
 			<result property="width" column="sizex" />
 			<result property="height" column="sizey" />
 			<result property="depth" column="sizez" />
 		</association>
+		<!-- Productot nem kell megadni? paraméterként is szerepel -->
 	</resultMap>
 
 	<select id="selectProducts" resultMap="ProductResultMap">

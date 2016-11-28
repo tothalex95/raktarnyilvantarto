@@ -18,6 +18,10 @@
 			select="querySourceForCargo" />
 		<collection property="boxes" column="cargoId" javaType="ArrayList"
 			select="queryBoxIdsForCargo" />
+			
+			<!-- box, destination? -->
+			<!-- <collection property="posts" column="idBlog" javaType="ArrayList"        
+			ofType="Post" select="selectPosts" resultMap="resultTag" /> -->
 	</resultMap>
 
 	<select id="querySourceForCargo" parameterType="integer"
