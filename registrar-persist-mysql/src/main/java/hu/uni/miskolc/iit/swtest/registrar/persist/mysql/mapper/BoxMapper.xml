@@ -7,9 +7,13 @@
 
 	<resultMap type="Box" id="BoxResultMap">
 		<id property="id" column="id" />
-		<result column="product" />
 		<result property="count" column="count" />
-		<result property="boxSize" column="boxSize" />
+		<result property="boxSize" column="boxSize"
+			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Box.BoxSize"
+			jdbcType="VARCHAR" />
+		<association property="product" column="product"
+			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Product"
+			resultMap="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.ProductMapper.ProductResultMap" />
 	</resultMap>
 
 	<select id="selectBoxes" resultMap="BoxResultMap">
@@ -47,7 +51,8 @@
 	</update>
 
 	<delete id="deleteBox" parameterType="Box">
-		delete from boxTable where id = #{box.id};
+		delete from boxTable where
+		id = #{box.id};
 	</delete>
 
 </mapper>

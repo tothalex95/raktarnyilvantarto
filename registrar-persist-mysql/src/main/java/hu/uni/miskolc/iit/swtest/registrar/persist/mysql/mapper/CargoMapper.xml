@@ -2,17 +2,50 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.CargoMapper">
+<mapper
+	namespace="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.CargoMapper">
 
 	<resultMap type="Cargo" id="CargoResultMap">
-		<id property="id" column="id"/>
-		
-		
-		
+		<id property="id" column="id" />
+		<association property="address"
+			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Address">
+			<result property="country" column="country" />
+			<result property="city" column="city" />
+			<result property="street" column="street" />
+			<result property="number" column="num" />
+		</association>
+		<association property="source" column="source"
+			select="querySourceForCargo" />
+		<collection property="boxes" column="cargoId" javaType="ArrayList"
+			select="queryBoxIdsForCargo" />
 	</resultMap>
 
-	<delete id="deleteCargo">
-		delete from cargotable where id = #{cargo.id};
+	<select id="querySourceForCargo" parameterType="integer"
+		resultType="Address">
+		select c.country, c.city, c.street, c.num from cargoTable
+		car inner join customerTable c on car.source = c.id;
+	</select>
+
+	<select id="queryBoxIdsForCargo" parameterType="integer"
+		resultType="Box">
+		select p.*, b.count, b.boxSize from cargo_boxTable c
+		inner
+		join
+		boxTable b inner join productTable p on c.boxId =
+		b.id and
+		b.product =
+		p.id
+		where c.cargoId = #{cargoId};
+	</select>
+
+	<update id="updateCargo" parameterType="Cargo">
+		update cargoTable set ...
+		where id = #{cargo.id};
+	</update>
+
+	<delete id="deleteCargo" parameterType="Cargo">
+		delete from cargotable
+		where id = #{cargo.id};
 	</delete>
-	
+
 </mapper>

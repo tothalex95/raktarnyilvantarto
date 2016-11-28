@@ -12,9 +12,9 @@ public interface BoxMapper {
 
 	public Collection<Box> selectBoxes();
 
-	public Collection<Box> selectBoxesByProduct(Product product);
+	public Collection<Box> selectBoxesByProduct(@Param("product") Product product);
 
-	public Collection<Box> selectBoxesByBoxSize(BoxSize boxSize);
+	public Collection<Box> selectBoxesByBoxSize(@Param("boxSize") BoxSize boxSize);
 
 	public Box selectBoxByID(@Param("id") long id);
 
