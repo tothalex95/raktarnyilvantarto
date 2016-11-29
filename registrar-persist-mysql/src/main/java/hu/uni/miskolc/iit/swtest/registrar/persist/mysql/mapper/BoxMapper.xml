@@ -11,14 +11,38 @@
 		<result property="boxSize" column="boxSize"
 			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Box.BoxSize"
 			jdbcType="VARCHAR" />
-		<association property="product" column="product"
+		<association property="product" 
+			resultMap="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.ProductMapper.ProductResultMap"/>
+		<!-- 
+		<association property="product" 
 			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Product"
-			resultMap="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.ProductMapper.ProductResultMap" />
-			<!-- Boxsize?? -->
+			select="queryProductsForBox"/>
+		 --> 
 	</resultMap>
-
+<!-- 
+	<select id="queryProductsForBox" resultMap="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.ProductMapper.ProductResultMap">
+		select p.id, p.category, p.name, p.manufacturer, p.sizex, p.sizey, p.sizez, p.weight, p.restriction
+		from productTable p join boxTable b on p.id = b.product;
+	</select>
+ -->
+ 
 	<select id="selectBoxes" resultMap="BoxResultMap">
-		select * from boxTable;
+		select 
+	 	  p.id 				as productNumber,
+		  p.category		as category,
+		  p.name 			as name,
+		  p.manufacturer	as manufacturer,
+		  p.sizex 			as width,
+		  p.sizey 			as height,
+		  p.sizez 			as depth,
+		  p.weight 			as weight,
+		  p.restriction 	as restriction,
+		  b.id 				as id,
+		  b.count			as count,
+		  b.boxSize 		as boxSize
+	 	from boxTable b inner join productTable p
+	 	on b.product = p.id
+	 	where b.id = #{id};
 	</select>
 
 	<select id="selectBoxesByProduct" resultMap="BoxResultMap">

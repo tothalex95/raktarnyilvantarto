@@ -7,38 +7,39 @@
 
 	<resultMap type="Cargo" id="CargoResultMap">
 		<id property="id" column="id" />
-		<association property="address"
-			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Address">
-			<result property="country" column="country" />
-			<result property="city" column="city" />
-			<result property="street" column="street" />
-			<result property="number" column="num" />
-		</association>
-		<association property="source" column="source"
-			select="querySourceForCargo" />
-		<collection property="boxes" column="cargoId" javaType="ArrayList"
-			select="queryBoxIdsForCargo" />
+		
+		<association property="source"
+			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Address" 
+			select="querySourceForCargo"/>
 			
-			<!-- box, destination? -->
-			<!-- <collection property="posts" column="idBlog" javaType="ArrayList"        
-			ofType="Post" select="selectPosts" resultMap="resultTag" /> -->
+		<association property="destination" 
+			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Address"
+			select="queryDestinationForCargo"/>
+		
+		<collection property="boxes" 
+			ofType="hu.uni.miskolc.iit.swtest.registrar.model.Box" 
+			select="queryBoxIdsForCargo" />
 	</resultMap>
 
+	<select id="queryDestinationForCargo" parameterType="integer"
+		resultType="hu.uni.miskolc.iit.swtest.registrar.model.Address">
+		select c.country, c.city, c.street, c.num from cargoTable
+		car inner join customerTable c on car.destination = c.id;
+	</select>
+	
 	<select id="querySourceForCargo" parameterType="integer"
-		resultType="Address">
+		resultType="hu.uni.miskolc.iit.swtest.registrar.model.Address">
 		select c.country, c.city, c.street, c.num from cargoTable
 		car inner join customerTable c on car.source = c.id;
 	</select>
 
 	<select id="queryBoxIdsForCargo" parameterType="integer"
-		resultType="Box">
-		select p.*, b.count, b.boxSize from cargo_boxTable c
-		inner
-		join
-		boxTable b inner join productTable p on c.boxId =
-		b.id and
-		b.product =
-		p.id
+		resultType="hu.uni.miskolc.iit.swtest.registrar.model.Box">
+		select p.*, b.count, b.boxSize 
+		from cargo_boxTable c 
+			 inner join boxTable b 
+			 inner join productTable p 
+		on c.boxId = b.id and b.product = p.id
 		where c.cargoId = #{cargoId};
 	</select>
 

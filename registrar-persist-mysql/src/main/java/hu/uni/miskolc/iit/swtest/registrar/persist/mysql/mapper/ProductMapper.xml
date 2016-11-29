@@ -24,12 +24,11 @@
 			<result property="height" column="sizey" />
 			<result property="depth" column="sizez" />
 		</association>
-		<!-- Productot nem kell megadni? paraméterként is szerepel -->
 	</resultMap>
 
 	<select id="selectProducts" resultMap="ProductResultMap">
-		select * from
-		productTable;
+		select * 
+		from productTable;
 	</select>
 
 	<select id="selectProductsByCategory" resultMap="ProductResultMap">
