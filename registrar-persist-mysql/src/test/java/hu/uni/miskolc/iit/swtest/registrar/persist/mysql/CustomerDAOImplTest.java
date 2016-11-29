@@ -40,8 +40,8 @@ public class CustomerDAOImplTest extends SetupDBTests {
 	@Test
 	public void testReadCustomers() {
 		Collection<Customer> actual = dao.readCustomers();
-		for (Customer product : actual)
-			System.out.println("---------------------------> " + product);
+		for (Customer customer : actual)
+			System.out.println("---------------------------> " + customer);
 	}
 
 	@Test
