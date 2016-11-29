@@ -1,8 +1,10 @@
 create table productTable (
 	id integer primary key,
-	category enum('FOOD','FURNITURE','NARCOTICS','INDUSTRIAL_EQUIPMENT'),
+	--category enum('FOOD','FURNITURE','NARCOTICS','INDUSTRIAL_EQUIPMENT'),
+	category varchar(50),
 	name varchar(50),
-	manufacturer enum('APPLE','BRAZZERS','UMBRELLACORP'),
+	--manufacturer enum('APPLE','BRAZZERS','UMBRELLACORP'),
+	manufacturer varchar(50),
 	sizex integer,
 	sizey integer,
 	sizez integer,

@@ -10,7 +10,7 @@ public class Product {
 	private final float weight;
 	private final int restriction;
 
-	public Product(long productNumber, Category category, String name, Manufacturer manufacturer, Size size,
+	public Product(Integer productNumber, Category category, String name, Manufacturer manufacturer, Size size,
 			float weight, int restriction) {
 		super();
 		if (productNumber<1) throw new IllegalArgumentException("The productNumber cannot be under 1.");
@@ -29,6 +29,17 @@ public class Product {
 		this.weight = weight;
 		this.restriction = restriction;
 	}
+	
+	public Product(Integer productNumber, String ss1, String ss2, String ss3, Integer s1, Integer s2, Integer s3, Float f1, Integer r1){
+		this.productNumber = 0;
+		this.category = null;
+		this.name = "";
+		this.manufacturer = null;
+		this.size = null;
+		this.weight = 0;
+		this.restriction = 1;
+		System.out.println(
+				"-----------------> "+ productNumber+" "+ ss1 + " " + ss2 +" "+ ss3 + " " + s1  +" "+ s2 +" " + s3 +" " + f1 + " " + r1); }
 
 	public long getProductNumber() {
 		return productNumber;

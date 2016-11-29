@@ -6,7 +6,7 @@ public class Customer {
 	private final String name;
 	private final Address address;
 
-	public Customer(long customerID, String name, Address address) {
+	public Customer(Integer customerID, String name, Address address) {
 		super();
 		if (customerID < 1) throw new IllegalArgumentException("Customer ID must be positive.");
 		else if (name == null || name.isEmpty()) throw new IllegalArgumentException("The name cannot be empty.");
@@ -14,6 +14,12 @@ public class Customer {
 		this.customerID = customerID;
 		this.name = name;
 		this.address = address;
+	}
+	
+	public Customer(Integer customerID, String name, String country, String city, String street, Integer number) {
+		this.customerID = customerID;
+		this.name = name;
+		this.address = new Address(country, city, street, number);
 	}
 
 	public long getCustomerID() {

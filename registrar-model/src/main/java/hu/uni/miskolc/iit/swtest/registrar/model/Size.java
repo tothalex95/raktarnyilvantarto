@@ -7,7 +7,7 @@ public final class Size implements Comparable<Size> {
 	private final int height;
 	private final int depth;
 
-	public Size(int width, int height, int depth) {
+	public Size(Integer width, Integer height, Integer depth) {
 		super();
 		if (width < 1 || height < 1 || depth < 1)
 			throw new IllegalArgumentException("Size parameters must be positive.");

@@ -28,9 +28,11 @@
 	<mappers>
 		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/CustomerMapper.xml" />
 		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/ProductMapper.xml" />
+		<!--  
 		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/PositionsMapper.xml" />
 		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/BoxMapper.xml" />
 		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/OrderMapper.xml" />
 		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/CargoMapper.xml" />
+		-->
 	</mappers>
 </configuration>

@@ -5,29 +5,36 @@
 <mapper
 	namespace="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.ProductMapper">
 
+	<resultMap type="hu.uni.miskolc.iit.swtest.registrar.model.Size"
+		id="SizeRM">
+		<result property="width" column="sizex" />
+		<result property="height" column="sizey" />
+		<result property="depth" column="sizez" />
+	</resultMap>
+
 	<resultMap type="Product" id="ProductResultMap">
 		<id property="productNumber" column="id" />
-		<result property="category" column="category" 
+		<result property="category" column="category"
 			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Category"
-			jdbcType="VARCHAR"/>
+			jdbcType="VARCHAR" />
 		<result property="name" column="name" />
 		<result property="manufacturer" column="manufacturer"
 			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Manufacturer"
 			jdbcType="VARCHAR" />
 		<result property="weight" column="weight" />
-		<result property="restriction" column="restriction" 
-			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Restriction"
-			jdbcType="INTEGER"/> <!-- ez kell ide??? -->
+		<result property="restriction" column="restriction"
+			javaType="java.lang.Integer"
+			jdbcType="INTEGER" /> <!-- ez kell ide??? -->
 		<association property="size"
 			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Size">
-			<result property="width" column="sizex" />
+			<id property="width" column="sizex" />
 			<result property="height" column="sizey" />
 			<result property="depth" column="sizez" />
 		</association>
 	</resultMap>
 
 	<select id="selectProducts" resultMap="ProductResultMap">
-		select * 
+		select *
 		from productTable;
 	</select>
 

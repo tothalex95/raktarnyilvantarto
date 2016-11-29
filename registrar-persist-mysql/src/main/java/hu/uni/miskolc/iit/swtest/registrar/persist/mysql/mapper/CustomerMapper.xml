@@ -5,17 +5,29 @@
 <mapper
 	namespace="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.CustomerMapper">
 
+	<!-- <resultMap type="hu.uni.miskolc.iit.swtest.registrar.model.Address"
+		id="AddressRM">
+		<result property="country" column="country" />
+		<result property="city" column="city" />
+		<result property="street" column="street" />
+		<result property="number" column="num" />
+	</resultMap> -->
+
 	<resultMap type="Customer" id="CustomerResultMap">
 		<id property="customerID" column="id" />
 		<result property="name" column="name" />
 		<association property="address"
-			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Address">
+			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Address" select="queryAddress">
 			<result property="country" column="country" />
 			<result property="city" column="city" />
 			<result property="street" column="street" />
 			<result property="number" column="num" />
 		</association>
 	</resultMap>
+
+	<select id="queryAddress" resultType="hu.uni.miskolc.iit.swtest.registrar.model.Address">
+		select country, city, street, num from customerTable where id = #{id};
+	</select>
 
 	<select id="selectCustomers" resultMap="CustomerResultMap">
 		select * from
