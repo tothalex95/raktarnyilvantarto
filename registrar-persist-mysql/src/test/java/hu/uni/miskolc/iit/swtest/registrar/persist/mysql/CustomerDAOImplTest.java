@@ -7,10 +7,12 @@ import java.util.Collection;
 
 import org.junit.Assume;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import hu.uni.miskolc.iit.swtest.registrar.model.Customer;
 import hu.uni.miskolc.iit.swtest.registrar.persist.CustomerDAO;
+import hu.uni.miskolc.iit.swtest.registrar.persist.CustomerNotFoundException;
 
 public class CustomerDAOImplTest extends SetupDBTests {
 
@@ -37,6 +39,7 @@ public class CustomerDAOImplTest extends SetupDBTests {
 		fail("Not yet implemented");
 	}
 
+	//@Ignore
 	@Test
 	public void testReadCustomers() {
 		Collection<Customer> actual = dao.readCustomers();
@@ -70,8 +73,9 @@ public class CustomerDAOImplTest extends SetupDBTests {
 	}
 
 	@Test
-	public void testReadCustomer() {
-		fail("Not yet implemented");
+	public void testReadCustomer() throws CustomerNotFoundException {
+		Customer actual = dao.readCustomer(2);
+		System.out.println("----------------------- " + actual);
 	}
 
 	@Test

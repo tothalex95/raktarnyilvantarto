@@ -1,3 +1,11 @@
+create table addressTable (
+	id integer primary key,
+	country varchar(50),
+	city varchar(50),
+	street varchar(50),
+	number integer
+);
+
 create table productTable (
 	id integer primary key,
 	--category enum('FOOD','FURNITURE','NARCOTICS','INDUSTRIAL_EQUIPMENT'),
@@ -15,10 +23,8 @@ create table productTable (
 create table customerTable (
 	id integer primary key,
 	name varchar(50),
-	country varchar(50),
-	city varchar(50),
-	street varchar(50),
-	num integer
+	addressID integer,
+	foreign key (addressID) references addressTable(id) on delete cascade
 );
 
 create table positionsTable (

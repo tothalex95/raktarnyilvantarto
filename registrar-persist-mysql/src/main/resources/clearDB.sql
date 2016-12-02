@@ -5,3 +5,4 @@ delete from boxTable;
 delete from positionsTable;
 delete from customerTable;
 delete from productTable;
+delete from addressTable;

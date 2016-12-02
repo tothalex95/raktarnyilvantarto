@@ -13,25 +13,26 @@
 	<resultMap type="Customer" id="CustomerResultMap">
 		<id property="customerID" column="id" />
 		<result property="name" column="name" />
-		<association property="address"
-			resultMap="AddressResultMap" column="{country, city, street, num}" />
+		<!-- <association property="address" column="{country, city, street, num}" 
+			resultMap="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.AddressMapper.AddressResultMap"> 
+			</association> -->
+		<association property="address" column="addressID"
+			javaType="hu.uni.miskolc.iit.swtest.registrar.model.Address"
+			resultMap="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.AddressMapper.AddressResultMap" />
 	</resultMap>
 
-	<resultMap type="hu.uni.miskolc.iit.swtest.registrar.model.Address"
-		id="AddressResultMap">
-		<result property="country" column="country" />
-		<result property="city" column="city" />
-		<result property="street" column="street" />
-		<result property="number" column="num" />
-	</resultMap>
-
-	<select id="queryAddress" resultType="hu.uni.miskolc.iit.swtest.registrar.model.Address">
-		select country, city,
-		street, num from customerTable where id = #{id};
+	<select id="queryAddress"
+		resultMap="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.AddressMapper.AddressResultMap">
+		select country as country,
+		city as city,
+		street as street, num
+		as number from customerTable where
+		id = #{id};
 	</select>
 
 	<select id="selectCustomers" resultMap="CustomerResultMap">
-		select * from customerTable;
+		select * from
+		customerTable;
 	</select>
 
 	<select id="selectCustomersByName" resultMap="CustomerResultMap">

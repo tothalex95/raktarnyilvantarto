@@ -10,6 +10,7 @@
 		<typeAlias alias="Box" type="hu.uni.miskolc.iit.swtest.registrar.model.Box"/>
 		<typeAlias alias="Order" type="hu.uni.miskolc.iit.swtest.registrar.model.Order"/>
 		<typeAlias alias="Cargo" type="hu.uni.miskolc.iit.swtest.registrar.model.Cargo"/>
+		<typeAlias alias="Address" type="hu.uni.miskolc.iit.swtest.registrar.model.Address"/>
 	</typeAliases>
 	<typeHandlers>
 	</typeHandlers>
@@ -28,6 +29,7 @@
 	<mappers>
 		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/CustomerMapper.xml" />
 		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/ProductMapper.xml" />
+		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/AddressMapper.xml" />
 		<!--  
 		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/PositionsMapper.xml" />
 		<mapper resource="hu/uni/miskolc/iit/swtest/registrar/persist/mysql/mapper/BoxMapper.xml" />

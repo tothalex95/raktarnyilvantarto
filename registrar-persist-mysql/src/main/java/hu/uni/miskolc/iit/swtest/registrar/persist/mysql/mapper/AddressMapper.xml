@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.AddressMapper">
+
+	<resultMap type="Address" id="AddressResultMap">
+		<id property="id" column="id" />
+		<result property="country" column="country" />
+		<result property="city" column="city" />
+		<result property="street" column="street" />
+		<result property="number" column="number" />
+	</resultMap>
+
+	<select id="selectAddresses" resultMap="AddressResultMap">
+		select * from addressTable;
+	</select>
+
+	<select id="selectAddress" resultMap="AddressResultMap">
+		select * from addressTable where id = #{id};
+	</select>
+	<!-- country = #{country}, city = #{city}, street = #{street}, num = #{num}; -->
+
+</mapper>

@@ -5,3 +5,4 @@ drop table if exists boxTable;
 drop table if exists positionsTable;
 drop table if exists customerTable;
 drop table if exists productTable;
+drop table if exists addressTable;
