@@ -45,7 +45,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 			throw new ExistingCustomerException();
 		SqlSession session = sqlSessionFactory.openSession();
 		CustomerMapper customerMapper = session.getMapper(CustomerMapper.class);
-		customerMapper.recordCustomer(customer.getName(), customer.getAddress());
+		customerMapper.recordCustomer(customer.getCustomerID(), customer.getName(), customer.getAddress());
 		session.commit();
 		session.close();
 	}

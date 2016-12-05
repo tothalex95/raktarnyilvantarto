@@ -21,5 +21,17 @@
 		select * from addressTable where id = #{id};
 	</select>
 	<!-- country = #{country}, city = #{city}, street = #{street}, num = #{num}; -->
+	
+	<insert id="recordAddress">
+        insert into addressTable (id, country,city,street,number) values (#{id}, #{country}, #{city}, #{street}, #{number});
+    </insert>
+    
+    <update id="updateAddress" parameterType="Address">
+    	update addressTable set country = #{address.country}, city = #{address.city}, street = #{address.street}, number = #{address.number} where id = #{address.id};
+    </update>
+    
+    <delete id="deleteAddress" parameterType="Address">
+        delete from addressTable where id = #{address.id};
+    </delete>
 
 </mapper>

@@ -7,10 +7,13 @@ import java.util.Collection;
 
 import org.junit.Assume;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import hu.uni.miskolc.iit.swtest.registrar.model.Address;
 import hu.uni.miskolc.iit.swtest.registrar.persist.AddressDAO;
+import hu.uni.miskolc.iit.swtest.registrar.persist.AddressNotFoundException;
+import hu.uni.miskolc.iit.swtest.registrar.persist.ExistingAddressException;
 
 public class AddressDAOImplTest extends SetupDBTests {
 
@@ -27,14 +30,15 @@ public class AddressDAOImplTest extends SetupDBTests {
 		}
 	}
 	
+	@Ignore
 	@Test
 	public void testAddressDAOImpl() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
-	public void testCreateAddress() {
-		fail("Not yet implemented");
+	public void testCreateAddress() throws ExistingAddressException {
+		dao.createAddress(new Address(4364, "HU", "MIskolc", "XY", 1));
 	}
 
 	@Test
@@ -45,18 +49,18 @@ public class AddressDAOImplTest extends SetupDBTests {
 	}
 
 	@Test
-	public void testReadAddress() {
-		fail("Not yet implemented");
+	public void testReadAddress() throws AddressNotFoundException {
+		dao.readAddress(1);
 	}
 
 	@Test
-	public void testUpdateAddress() {
-		fail("Not yet implemented");
+	public void testUpdateAddress() throws AddressNotFoundException {
+		dao.updateAddress(new Address(1, "HU", "Miskolc", "XY", 1));
 	}
 
 	@Test
-	public void testDeleteAddress() {
-		fail("Not yet implemented");
+	public void testDeleteAddress() throws AddressNotFoundException {
+		dao.deleteAddress(new Address(1, "HU", "Miskolc", "sarok", 1));
 	}
 
 }

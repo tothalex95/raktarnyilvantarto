@@ -16,11 +16,11 @@ public class Customer {
 		this.address = address;
 	}
 	
-	public Customer(Integer customerID, String name, Integer addressID, String country, String city, String street, Integer number) {
+	/*public Customer(Integer customerID, String name, Integer addressID, String country, String city, String street, Integer number) {
 		this.customerID = customerID;
 		this.name = name;
 		this.address = new Address(addressID, country, city, street, number);
-	}
+	}*/
 
 	public long getCustomerID() {
 		return customerID;

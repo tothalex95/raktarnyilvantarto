@@ -21,18 +21,13 @@
 			resultMap="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.AddressMapper.AddressResultMap" />
 	</resultMap>
 
-	<select id="queryAddress"
-		resultMap="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.AddressMapper.AddressResultMap">
-		select country as country,
-		city as city,
-		street as street, num
-		as number from customerTable where
-		id = #{id};
-	</select>
+	<!-- <select id="queryAddress" resultMap="hu.uni.miskolc.iit.swtest.registrar.persist.mysql.mapper.AddressMapper.AddressResultMap"> 
+		select country as country, city as city, street as street, number as number 
+		from customerTable where id = #{id}; </select> -->
 
 	<select id="selectCustomers" resultMap="CustomerResultMap">
 		select * from
-		customerTable;
+		customerTable c inner join addressTable a on c.addressID = a.id;
 	</select>
 
 	<select id="selectCustomersByName" resultMap="CustomerResultMap">
@@ -65,13 +60,13 @@
 
 	<select id="selectCustomerByID" resultMap="CustomerResultMap">
 		select * from
-		customerTable where id = #{id};
+		customerTable c inner join addressTable a on c.addressID = a.id where
+		c.id = #{id};
 	</select>
 
 	<insert id="recordCustomer">
-		insert into customerTable (name, country, city,
-		street, num) values (#{name}, #{address.country}, #{address.city},
-		#{address.street}, #{address.number});
+		insert into customerTable (id, name, address) values
+		(#{id}, #{name}, #{address});
 	</insert>
 
 	<update id="updateCustomer" parameterType="Customer">
