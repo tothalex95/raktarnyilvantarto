@@ -50,7 +50,6 @@ public class Cargo {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((source == null) ? 0 : source.hashCode());
 		return result;
 	}
 
@@ -64,11 +63,6 @@ public class Cargo {
 			return false;
 		Cargo other = (Cargo) obj;
 		if (id != other.id)
-			return false;
-		if (source == null) {
-			if (other.source != null)
-				return false;
-		} else if (!source.equals(other.source))
 			return false;
 		return true;
 	}

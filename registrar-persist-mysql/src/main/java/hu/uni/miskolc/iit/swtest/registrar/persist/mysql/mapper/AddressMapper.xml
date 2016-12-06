@@ -20,7 +20,18 @@
 	<select id="selectAddress" resultMap="AddressResultMap">
 		select * from addressTable where id = #{id};
 	</select>
-	<!-- country = #{country}, city = #{city}, street = #{street}, num = #{num}; -->
+	
+	<select id="selectAddressesByCountry" resultMap="AddressResultMap">
+		select * from addressTable where country = #{country};
+	</select>
+	
+	<select id="selectAddressesByCity" resultMap="AddressResultMap">
+		select * from addressTable where city = #{city};
+	</select>
+	
+	<select id="selectAddressByAddress" resultMap="AddressResultMap">
+		select * from addressTable where country = #{country} and city = #{city} and street = #{street} and number = #{number};
+	</select>
 	
 	<insert id="recordAddress">
         insert into addressTable (id, country,city,street,number) values (#{id}, #{country}, #{city}, #{street}, #{number});

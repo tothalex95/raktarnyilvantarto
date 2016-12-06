@@ -98,4 +98,37 @@ public class AddressDAOImpl implements AddressDAO {
 		session.close();
 	}
 
+	@Override
+	public Collection<Address> readAddressesByCountry(String country) {
+		Collection<Address> result = new ArrayList<Address>();
+		SqlSession session = sqlSessionFactory.openSession();
+		AddressMapper customerMapper = session.getMapper(AddressMapper.class);
+		result = customerMapper.selectAddressesByCountry(country);
+		session.commit();
+		session.close();
+		return result;
+	}
+
+	@Override
+	public Collection<Address> readAddressesByCity(String city) {
+		Collection<Address> result = new ArrayList<Address>();
+		SqlSession session = sqlSessionFactory.openSession();
+		AddressMapper customerMapper = session.getMapper(AddressMapper.class);
+		result = customerMapper.selectAddressesByCity(city);
+		session.commit();
+		session.close();
+		return result;
+	}
+
+	@Override
+	public Address readAddressByAddress(String country, String city, String street, Integer number) {
+		Address result = null;
+		SqlSession session = sqlSessionFactory.openSession();
+		AddressMapper customerMapper = session.getMapper(AddressMapper.class);
+		result = customerMapper.selectAddressByAddress(country, city, street, number);
+		session.commit();
+		session.close();
+		return result;
+	}
+
 }

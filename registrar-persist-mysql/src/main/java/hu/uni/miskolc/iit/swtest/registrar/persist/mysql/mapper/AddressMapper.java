@@ -10,13 +10,11 @@ public interface AddressMapper {
 
 	public Collection<Address> selectAddresses();
 
-	/*public Collection<Address> selectAddressesByCountry(@Param("country") String country);
+	public Collection<Address> selectAddressesByCountry(@Param("country") String country);
 
 	public Collection<Address> selectAddressesByCity(@Param("city") String city);
 
-	public Collection<Address> selectAddressesByStreet(@Param("street") String street);
-
-	public Address selectAddress(@Param("country") String country, @Param("city") String city, @Param("street") String street, @Param("num") Integer num);*/
+	public Address selectAddressByAddress(@Param("country") String country, @Param("city") String city, @Param("street") String street, @Param("number") Integer number);
 
 	public Address selectAddress(@Param("id") Integer id);
 	

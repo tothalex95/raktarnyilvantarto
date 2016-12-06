@@ -47,6 +47,14 @@ public class CargoTest {
 	}
 	
 	@Test
+	public void testGetId() {
+		Collection<Box> boxes = new ArrayList<Box>();
+		boxes.add(new Box(1, new Product(1, Category.FOOD, "vaj", Manufacturer.APPLE, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))),1,BoxSize.BIG));
+		Cargo a = new Cargo(1, boxes,new Address(0, "A", "B", "C", 3), new Address(0, "A", "B", "C", 3));
+		assertEquals(1, a.getId());
+	}
+	
+	@Test
 	public void testGetBoxes(){
 		Collection<Box> boxes = new ArrayList<Box>();
 		boxes.add(new Box(1, new Product(1, Category.FOOD, "vaj", Manufacturer.APPLE, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))),1,BoxSize.BIG));
@@ -66,6 +74,48 @@ public class CargoTest {
 		boxes.add(new Box(1, new Product(1, Category.FOOD, "vaj", Manufacturer.APPLE, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))),1,BoxSize.BIG));
 		Cargo a = new Cargo(1, boxes,new Address(0, "A", "B", "C", 3), new Address(0, "A", "B", "C", 3));
 		assertEquals(new Address(0, "A", "B", "C", 3), a.getDestination());
+	}
+	
+	@Test
+	public void testEqualsWithSameCargo() {
+		Collection<Box> boxes = new ArrayList<Box>();
+		boxes.add(new Box(1, new Product(1, Category.FOOD, "vaj", Manufacturer.APPLE, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))),1,BoxSize.BIG));
+		Cargo a = new Cargo(1, boxes,new Address(0, "A", "B", "C", 3), new Address(0, "A", "B", "C", 3));
+		assertEquals(true, a.equals(a));
+	}
+	
+	@Test
+	public void testEqualsWithDifferentCargo() {
+		Collection<Box> boxes = new ArrayList<Box>();
+		boxes.add(new Box(1, new Product(1, Category.FOOD, "vaj", Manufacturer.APPLE, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))),1,BoxSize.BIG));
+		Cargo a = new Cargo(1, boxes,new Address(0, "A", "B", "C", 3), new Address(0, "A", "B", "C", 3));
+		Cargo b = new Cargo(1, boxes,new Address(0, "A", "B", "C", 3), new Address(0, "A", "B", "C", 3));
+		assertEquals(true, a.equals(b));
+	}
+	
+	@Test
+	public void testEqualsWithNull() {
+		Collection<Box> boxes = new ArrayList<Box>();
+		boxes.add(new Box(1, new Product(1, Category.FOOD, "vaj", Manufacturer.APPLE, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))),1,BoxSize.BIG));
+		Cargo a = new Cargo(1, boxes,new Address(0, "A", "B", "C", 3), new Address(0, "A", "B", "C", 3));
+		assertEquals(false, a.equals(null));
+	}
+	
+	@Test
+	public void testEqualsWithDifferentObjectType() {
+		Collection<Box> boxes = new ArrayList<Box>();
+		boxes.add(new Box(1, new Product(1, Category.FOOD, "vaj", Manufacturer.APPLE, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))),1,BoxSize.BIG));
+		Cargo a = new Cargo(1, boxes,new Address(0, "A", "B", "C", 3), new Address(0, "A", "B", "C", 3));
+		assertEquals(false, a.equals(new String()));
+	}
+	
+	@Test
+	public void testEqualsWithDifferentId() {
+		Collection<Box> boxes = new ArrayList<Box>();
+		boxes.add(new Box(1, new Product(1, Category.FOOD, "vaj", Manufacturer.APPLE, new Size(3), 25, Restriction.getFlagFromRestrictions(EnumSet.noneOf(Restriction.class))),1,BoxSize.BIG));
+		Cargo a = new Cargo(1, boxes,new Address(0, "A", "B", "C", 3), new Address(0, "A", "B", "C", 3));
+		Cargo b = new Cargo(2, boxes,new Address(0, "A", "B", "C", 3), new Address(0, "A", "B", "C", 3));
+		assertEquals(false, a.equals(b));
 	}
 
 }

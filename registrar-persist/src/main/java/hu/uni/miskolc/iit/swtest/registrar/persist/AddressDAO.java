@@ -11,6 +11,12 @@ public interface AddressDAO {
 	public Collection<Address> readAddresses();
 
 	public Address readAddress(Integer id) throws AddressNotFoundException;
+	
+	public Collection<Address> readAddressesByCountry(String country);
+	
+	public Collection<Address> readAddressesByCity(String city);
+	
+	public Address readAddressByAddress(String country, String city, String street, Integer number) throws AddressNotFoundException;
 
 	public void updateAddress(Address address) throws AddressNotFoundException;
 

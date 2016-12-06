@@ -29,11 +29,11 @@ public class AddressDAOImplTest extends SetupDBTests {
 			Assume.assumeNoException(e);
 		}
 	}
-	
+
 	@Ignore
 	@Test
 	public void testAddressDAOImpl() {
-		
+
 	}
 
 	@Test
@@ -61,6 +61,21 @@ public class AddressDAOImplTest extends SetupDBTests {
 	@Test
 	public void testDeleteAddress() throws AddressNotFoundException {
 		dao.deleteAddress(new Address(1, "HU", "Miskolc", "sarok", 1));
+	}
+
+	@Test
+	public void testreadAddressesByCountry() {
+		dao.readAddressesByCountry("HU");
+	}
+
+	@Test
+	public void testreadAddressesByCity() {
+		dao.readAddressesByCity("Miskolc");
+	}
+
+	@Test
+	public void testreadAddressByAddress() throws AddressNotFoundException {
+		dao.readAddressByAddress("HU", "Miskolc", "sarok", 1);
 	}
 
 }
