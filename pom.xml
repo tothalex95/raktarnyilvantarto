@@ -3,7 +3,7 @@
   <groupId>hu.uni.miskolc.iit.swtest</groupId>
   <artifactId>registrar</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+  <packaging>pom</packaging> 
   <modules>
   	<module>registrar-controller</module>
   	<module>registrar-model</module>
